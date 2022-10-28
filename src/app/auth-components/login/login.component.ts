@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { FirestoreService } from 'src/app/firestore.service';
@@ -10,11 +11,8 @@ import { FirestoreService } from 'src/app/firestore.service';
 })
 export class LoginComponent implements OnInit {
 
-  userName!: string; // Todo use reactive forms m
-  userEmail!: string;
-  userPassword!: string;
+  loginForm!: FormGroup | any;
   emailSignInSubmitted = false;
-  // errorMessage!: string | null;
   errorMessage!: string | undefined;
 
   constructor(
@@ -24,14 +22,36 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loginForm = new FormGroup(
+      {
+        //userName: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      }
+    );
+  }
+
+  get email(){
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  onSubmit(formdata: any) {
+    if (this.loginForm.valid) this.emailSignIn();
   }
 
   checkInputsEmpty(){
-    return !this.userEmail || !this.userPassword || this.userEmail.length == 0 || this.userPassword.length == 0;
+    return !this.email.value || !this.password.value || this.email.value.length == 0 || this.password.value.length == 0;
   }
 
+  // case guest sign-in: no error messages should be displayed
   checkPWRequired() {
-    if (this.userEmail && this.userEmail.length > 0) return true;
+    console.log(this.email.value, (this.email.value && this.email.value.length > 0));
+
+    if (this.email.value && this.email.value.length > 0) return true;
     return false;
   }
 
@@ -56,7 +76,7 @@ export class LoginComponent implements OnInit {
   googleSignIn() {}
 
   //anonymous log in for guest users: call signIn Api from authService
-  guestSignIn() {}
+  onGuestSignIn() {}
 
 
 }
