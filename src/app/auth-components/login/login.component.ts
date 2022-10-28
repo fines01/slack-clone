@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  onSubmit(formdata: any) {
+  onSubmit(formData: object) {
     if (this.loginForm.valid) this.emailSignIn();
   }
 
@@ -49,8 +49,6 @@ export class LoginComponent implements OnInit {
 
   // case guest sign-in: no error messages should be displayed
   checkPWRequired() {
-    console.log(this.email.value, (this.email.value && this.email.value.length > 0));
-
     if (this.email.value && this.email.value.length > 0) return true;
     return false;
   }

@@ -1,1 +1,76 @@
-<p>register works!</p>
+<div class="cards-container">
+  <mat-card>
+    <!-- <form action="" class="" [appConfirmPassword]="['password', 'passwordConfirmation']"> -->
+    <form action="" class="" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+
+      <mat-card-title class="align-center">
+        Sign Up
+      </mat-card-title>
+
+      <div class="">
+
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>Username</mat-label>
+          <input type="email" matInput [formControl]="userName" name="username" class="form-control" required autocomplete="off">
+          <mat-hint>Username</mat-hint>
+          <mat-error>Please choose a username</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>Email</mat-label>
+          <input type="email" [formControl]="email" matInput name="email" class="form-control" email required autocomplete="off">
+          <mat-hint>E-Mail</mat-hint>
+          <mat-error>Please enter a valid E-Mail address</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="width-100">
+          <mat-label>Password</mat-label>
+          <input type="password" [formControl]="password" matInput name="password" class="form-control" minlength="6" autocomplete="off"
+            required >
+          <mat-hint>Password</mat-hint>
+          <mat-error *ngIf="password.hasError('required')">Please enter your password</mat-error>
+          <mat-error *ngIf="password.hasError('minlength')">Password should have min. 6 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="width-100">
+          <mat-label>Confirm password</mat-label>
+          <input type="password" [formControl]="passwordConfirmation" matInput name="passwordConfirmation" autocomplete="off"
+            class="form-control" required>
+          <mat-hint>Password Confirmation</mat-hint>
+          <mat-error *ngIf="passwordConfirmation.touched && passwordConfirmation.hasError('matching')">Passwords do
+            not match!</mat-error>
+          <mat-error *ngIf="passwordConfirmation.hasError('required')">Please confirm your password</mat-error>
+          <!-- <mat-error>Passwords do not match</mat-error> -->
+        </mat-form-field>
+      </div>
+      <!-- TODO checkbox: remember me -->
+
+      <div *ngIf="errorMessage" class="error-msg warn">{{ errorMessage }}</div>
+
+      <div class="form-buttons " mat-dialog-actions>
+        <button [disabled]="registerForm.invalid" mat-button class="width-50 btn-login" type="submit">Sign Up</button>
+        <!-- <button mat-button class="width-50 btn-guest-login" (click)="guestSignIn()">Log in as guest</button> -->
+      </div>
+
+      <div class="form-info align-center">
+        Already have an account? <span class="link" [routerLink]="['/home/sign-in']"> Log In</span>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-card class="mt-32">
+    <div class="width-100">
+      <mat-card-title class="align-center">
+        <h3>Or continue with Google</h3>
+      </mat-card-title>
+
+      <div mat-dialog-actions class="mt-16 align-center">
+        <button disabled class="btn-logo" mat-button (click)="googleSignIn()">
+          <img src="./assets/img/icons/google-icon-logo-pngrepo-com.png" alt="" class="btn-icon">
+          Sign in with Google
+        </button>
+      </div>
+    </div>
+  </mat-card>
+
+</div>
