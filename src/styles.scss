@@ -267,6 +267,12 @@ $altTheme: (
     }
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html,
 body {
     height: 100%;
@@ -275,4 +281,54 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.width-50 {
+  width: calc(50% - 8px); // if 2 elements per row
+}
+
+.width-75 {
+  width: calc(75% - 8px); // 2 elements per rom)
+}
+
+.width-33 {
+  width: calc(33% - 9px); // three el per row, 2x mr-16 = 16px, 32/3 = 10.67 
+}
+
+.width-25 {
+  width: calc(25% - 8px);
+}
+
+.mr-16 {
+  margin-right: 1rem !important;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mt-32 {
+  margin-top: 32px;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.align-center {
+  text-align: center;
 }
