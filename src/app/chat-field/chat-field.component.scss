@@ -1,0 +1,24 @@
+mat-card {
+    margin-top: 8px;
+}
+
+.container-field {
+    display: flex;
+    flex-direction: row;
+}
+
+.field-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+    h3 {
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        font-weight: 700;
+    }
+}
+
+img {
+    width: 48px;
+    height: 48px;
+}
