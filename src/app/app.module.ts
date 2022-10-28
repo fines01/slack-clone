@@ -18,6 +18,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChatComponent } from './chat/chat.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { ChatFieldComponent } from './chat-field/chat-field.component';
+import { ChatInputComponent } from './chat-input/chat-input.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -28,20 +31,23 @@ import { MatIconModule } from '@angular/material/icon';
     ChannelsMenuComponent,
     HeaderToolbarComponent,
     UserProfileComponent,
-    ChatComponent
+    ChatComponent,
+    ChatFieldComponent,
+    ChatInputComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatToolbarModule,
+    MatCardModule,
     MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

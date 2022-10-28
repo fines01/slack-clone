@@ -1,0 +1,21 @@
+textarea {
+    height: 40px;
+    width: 100%;
+}
+
+.optionen {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.left {
+    display: flex;
+    button {
+        margin-right: 8px;
+    }
+}
+
+.right {
+    display: flex;
+}
