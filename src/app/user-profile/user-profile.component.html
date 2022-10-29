@@ -1,1 +1,81 @@
-<p>user-profile works!</p>
+<div class="profil-header">
+    <div style="font-size: 12px">Profil</div>
+    <div>
+        <mat-icon style="display:flex; justify-content: center; align-items: center;" inline="true">close</mat-icon>
+    </div>
+</div>
+
+<div class="profil-container">
+    <div class="profil-img-container">
+        <div class="profil-img">
+            <div class="img"></div>
+        </div>
+    </div>
+
+    <div class="profil-section" style="box-shadow: 0 0.1px 0 0 white">
+        <div style="display: flex;"></div>
+        <div class="profil-section-content">
+
+            <div class="profil-name">
+                <span class="profil-name-text">Max Mustermann</span>
+                <button class="profil-name-edit link-button" type="Button">Bearbeiten</button>
+            </div>
+
+            <div class="profil-subtitle">Schüler</div>
+
+            <div class="break-word"></div>
+
+            <div>
+                <button class="button-unstyled">
+                    <i></i>
+                    <span>+ Aussprache des Namens hinzufügen</span>
+                </button>
+            </div>
+
+            <div class="margin-top-50">
+                <i>...</i>
+                <span class="padding-left-50">Aktiv</span>
+            </div>
+
+
+            <div class="margin-top-75">
+                <span class="time">
+                    <mat-icon style="font-size: 12px; height: 12px; width: 12px; margin-right: 5px;">access_time
+                    </mat-icon>21:45 Uhr Ortszeit
+                </span>
+            </div>
+
+
+
+            <div class="edit-status-div">
+                <button mat-raised-button="basic" style="font-size: 10px">Status einstellen</button>
+                <button mat-icon-button="basic">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="profil-section">
+        <div class="contact-info-div">
+            <div>Kontaktdaten</div>
+            <div class="link-button">Edit</div>
+        </div>
+        
+        <div class="e-mail-div">
+            <button mat-raised-button="basic" style="max-width:10px;"><mat-icon style="font-size: 10px;">mail_outline</mat-icon></button>
+
+            <div class="contact-info">
+                <span>E-Mail-Adresse</span>
+                <span><a href>www.maxmustermann@gmx.de</a></span>
+            </div>
+
+        </div>
+
+        <div class="phone-div">
+            <button mat-raised-button="basic"><mat-icon style="font-size:10px;">call</mat-icon></button>
+
+        </div>
+    </div>
+</div>
