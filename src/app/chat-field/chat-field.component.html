@@ -3,15 +3,17 @@
 
         <div>
 
-            <img src="../assets/img/ghost.png">
+            <img src="../assets/img/{{chat.profilImg}}">
 
         </div>
 
         <div class="field-info">
-            <h3>Vorname & Nachname</h3>
+            <h3> {{chat.firstName}} {{chat.lastName}} </h3>
 
-            <p>Text oder Bild vom Chat input</p>
-
+            <p> {{chat.message}} </p>
+            <!--
+            <img src="../assets/img/{{messageImg}}">
+            -->
         </div>
 
     </div>
