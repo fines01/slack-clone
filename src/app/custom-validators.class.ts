@@ -21,8 +21,4 @@ constructor() {}
       };
     }
 
-    // static validateEmail() {
-
-    // }
-
 }

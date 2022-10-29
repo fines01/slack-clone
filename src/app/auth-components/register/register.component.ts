@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
       {
         userName: new FormControl('', [Validators.required]),
         // TEST: including a regex validator, because the standard email validator is weak
-        email: new FormControl('', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+        email: new FormControl('', [Validators.required, Validators.email, Validators.pattern("^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{1,}$")]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)]),
         // passwordConfirmation: new FormControl('', [Validators.required, CustomValidators.matchStrings('password', 'passwordConfirmation')]),
         passwordConfirmation: new FormControl('', [Validators.required, ]),
