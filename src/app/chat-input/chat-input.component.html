@@ -2,21 +2,22 @@
     <div>
         <mat-form-field style="width: 100%;" appearance="fill">
             <mat-label>Nachricht an</mat-label>
-            <textarea (keydown.enter)="sendMessage()" [(ngModel)]="newMessage" matInput style="max-height: 100px;" cdkTextareaAutosize></textarea>
+            <textarea [class.fett]="weight" [class.kursive]="italic" (keydown.enter)="sendMessage()" [(ngModel)]="newMessage" matInput style="max-height: 100px;" cdkTextareaAutosize></textarea>
         </mat-form-field>
     </div>
 
     <div class="optionen">
 
         <div class="left">
-            <button><mat-icon> insert_photo</mat-icon></button>
-            <button><mat-icon> line_weight</mat-icon></button>
-            <button><mat-icon> format_italic</mat-icon></button>
+            <label for="upload-photo"><mat-icon> insert_photo</mat-icon></label>
+            <input type="file" name="upload-photo" id="upload-photo">
+            <button (click)="editWeight()"><mat-icon> line_weight</mat-icon></button>
+            <button (click)="editItalic()"><mat-icon> format_italic</mat-icon></button>
             <button><mat-icon> insert_emoticon</mat-icon></button>
         </div>
 
         <div class="right">
-            <button type="submit" *ngIf="this.newMessage" (click)="sendMessage()"><mat-icon>send</mat-icon></button>
+            <button type="submit" *ngIf="this.newMessage" (click)="sendMessage() "><mat-icon>send</mat-icon></button>
         </div>
     </div>
 </mat-card>
