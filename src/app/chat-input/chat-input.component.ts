@@ -38,7 +38,7 @@ export class ChatInputComponent implements OnInit {
     this.newMessage = '';
   }
 
-  onImageUpload() {
+  imageUpload() {
     console.log('test');
   }
 }

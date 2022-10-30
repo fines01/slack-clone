@@ -82,14 +82,14 @@
     vertical-align: initial;
 }
 
-.profil-subtitle{
+.profil-subtitle {
     font-size: 8px;
     font-weight: 400;
     line-height: 1.50001;
     word-break: break-word;
 }
 
-.button-unstyled{
+.button-unstyled {
     background: none;
     border: 0;
     color: inherit;
@@ -106,38 +106,50 @@
     color: rgba(var(--sk_highlight, 18, 100, 163), 1);
 }
 
-.time{
+.time {
     font-size: 8px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.edit-status-div{
+.edit-status-div {
     max-width: 350px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.contact-info-div{
+.contact-info-div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 8px;
 }
 
-.e-mail-div{
+.e-mail-div {
     display: flex;
     font-size: 8px;
+    .mat-raised-button {
+        padding: 0px 2px 0px 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: none;
+        min-width: 16px;
+        line-height: none;
+        width: 24px;
+        height: 24px;
+    }
+    mat-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-.contact-info{
+.contact-info {
     margin-left: 5px;
     display: flex;
     flex-direction: column;
-}
-
-.mat-raised-button{
-    padding: 0px 2px 0px 2px;
 }

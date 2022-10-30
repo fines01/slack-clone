@@ -10,7 +10,7 @@
 
         <div class="left">
             <label for="upload-photo"><mat-icon> insert_photo</mat-icon></label>
-            <input type="file" name="upload-photo" id="upload-photo">
+            <input type="file" name="upload-photo" id="upload-photo" (change)="imageUpload()" >
             <button (click)="editWeight()"><mat-icon> line_weight</mat-icon></button>
             <button (click)="editItalic()"><mat-icon> format_italic</mat-icon></button>
             <button><mat-icon> insert_emoticon</mat-icon></button>
