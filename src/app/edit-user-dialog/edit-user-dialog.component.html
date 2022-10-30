@@ -51,13 +51,13 @@
         <div class="edit-img-div">
             <div class="profil-img-container">
                 <div class="profil-img">
-                    <div class="img"></div>
+                  <img class="avatar-img" src="assets/img/avatar-placeholder.png">
                 </div>
             </div>
 
             <div class="img-btn-div">
                 <button class="btn" mat-raised-button color="primary">Foto hochladen</button>
-                <a href>Foto entfernen</a>
+                <button (click)="openImgRemoveDialog()" class="btn" mat-raised-button color="basic">Foto entfernen</button>
             </div>
 
             

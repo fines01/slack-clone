@@ -30,6 +30,7 @@ import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.com
 import {MatMenuModule} from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import { RemoveImgDialogComponent } from './remove-img-dialog/remove-img-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {MatSelectModule} from '@angular/material/select';
     ChatFieldComponent,
     ChatInputComponent,
     EditUserDialogComponent,
+    RemoveImgDialogComponent,
     
   ],
   imports: [

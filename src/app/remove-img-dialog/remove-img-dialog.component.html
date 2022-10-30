@@ -1,0 +1,21 @@
+<div class="remove-img-dialog-div">
+<div class="header"><mat-icon (click)="openEditUser()" class="arrow-left">keyboard_arrow_left</mat-icon> Profilbild entfernen</div>
+<div class="current-img">
+    <div class="profil-img-container">
+        <div class="profil-img">
+
+            <div class="img"><img class="avatar-img" src="assets/img/avatar-placeholder.png"></div>
+
+            <div class="current-img-text">
+                Möchtest du dein Foto wirklich entfernen? Wir werden es durch einen Standard-Avatar von Slack-clone ersetzen.
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <button (click)="openEditUser()" class="btn" mat-raised-button color="basic">Abbrechen</button>
+    <button class="btn" mat-raised-button color="primary">Ja, Foto entfernen</button>
+</div>
+
+</div>
