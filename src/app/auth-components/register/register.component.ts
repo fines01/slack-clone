@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth.service';
-import { FirestoreService } from 'src/app/firestore.service';
-import { CustomValidators } from 'src/app/custom-validators.class';
+import { AuthService } from 'src/app/services/auth.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { CustomValidators } from 'src/models/custom-validators.class';
 
 @Component({
   selector: 'app-register',
