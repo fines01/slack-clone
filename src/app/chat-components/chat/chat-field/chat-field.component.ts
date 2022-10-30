@@ -8,7 +8,8 @@ import { Chat } from 'src/models/chat.class';
 })
 export class ChatFieldComponent implements OnInit {
   chat = new Chat();
-
+  weight: boolean = false;
+  italic: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}

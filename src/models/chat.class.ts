@@ -3,12 +3,16 @@ export class Chat {
   lastName: string;
   profilImg: string;
   message: string;
+  weight: boolean;
+  italic: boolean;
 
   constructor(obj?: any) {
     this.firstName = obj ? obj.firstName : 'Dominik';
     this.lastName = obj ? obj.lastName : 'Graf';
     this.profilImg = obj ? obj.profilImg : 'ghost.png';
     this.message = obj ? obj.message : 'Test 1';
+    this.weight = obj ? obj.weight : false;
+    this.italic = obj ? obj.italic : false;
   }
 
   public toJSON() {
@@ -17,6 +21,8 @@ export class Chat {
       lastName: this.lastName,
       profilImg: this.profilImg,
       message: this.message,
+      weight: this.weight,
+      italic: this.italic,
     };
   }
 }
