@@ -1,0 +1,99 @@
+.edit-user-dialog-div {
+    height: 80vh;
+    width: 80vh;
+}
+
+.header {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.profil-img-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    padding: 16px 16px 0;
+    width: 100%;
+}
+
+.img{
+    background-color: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
+    border-radius: 8px;
+    height: 0;
+    overflow: hidden;
+    padding-top: 100%;
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.edit-container {
+    display: flex;
+    height: fit-content;
+    justify-content: space-between;
+}
+
+.edit-img-div {
+    width: 30%;
+    height: 60vh;
+    box-shadow: -0.1px 0 0.1px 0px white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    a{
+        color: rgba(var(--sk_highlight,18,100,163),1);
+        font-size: 8px;
+        font-weight: bold;
+        border: none;
+        text-decoration: none;
+    }
+}
+
+.edit-text-div{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.mat-div{
+    width: 100%;
+    font-size: 8px;
+}
+
+.margin-30{
+    margin-top: 30px;
+}
+
+.footer{
+    width: auto;
+    height: 40px;
+    box-shadow: 0 -0.2px 0 0 white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer-btn-div{
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    height: 12px;
+}
+
+.img-btn-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

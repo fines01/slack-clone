@@ -1,0 +1,81 @@
+<div class="edit-user-dialog-div">
+
+    <div class="header">Dein Profil bearbeiten</div>
+
+    <div class="edit-container">
+        <div class="edit-text-div">
+
+            <mat-form-field class="mat-div" appearance="outline">
+                <mat-label>Vollständiger Name</mat-label>
+                <input matInput>
+            </mat-form-field>
+
+            <mat-form-field class="mat-div" appearance="outline">
+                <mat-label>Anzeige Name</mat-label>
+                <input matInput>
+                <mat-hint>Der Name, mit dem dich die anderen Benutzerinnen und Benutzer auf Slack-Clone ansprechen. Dies
+                    könnte z. B. dein Vorname oder dein Spitzname sein.</mat-hint>
+            </mat-form-field>
+
+
+            <div class="margin-30"></div>
+
+
+            <mat-form-field class="mat-div" appearance="outline">
+                <mat-label>Titel</mat-label>
+                <input matInput>
+                <mat-hint>Teile anderen Leuten mit, was du in deinem Workspace machst</mat-hint>
+            </mat-form-field>
+
+            <div class="margin-30"></div>
+
+            <mat-form-field class="mat-div" appearance="outline">
+                <mat-label>Aussprache des Namens</mat-label>
+                <input matInput>
+                <mat-hint>Das kann eine phonetische Aussprache sein oder ein Beispiel dafür, wie dein Name klingt.</mat-hint>
+            </mat-form-field>
+
+
+            <div class="margin-30"></div>
+
+            <mat-form-field class="mat-div" appearance="fill">
+                <mat-label>Zeitzone</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+
+        <div class="edit-img-div">
+            <div class="profil-img-container">
+                <div class="profil-img">
+                    <div class="img"></div>
+                </div>
+            </div>
+
+            <div class="img-btn-div">
+                <button class="btn" mat-raised-button color="primary">Foto hochladen</button>
+                <a href>Foto entfernen</a>
+            </div>
+
+            
+        </div>
+
+      
+    </div>
+
+    <div class="footer">
+
+        <div class="footer-btn-div">
+            <button (click)="closeDialog()" class="btn" mat-raised-button>Abbrechen</button>
+            <button class="btn" mat-raised-button color="primary">Änderung speichern</button>
+        </div>
+    
+
+    </div>
+
+
+
+</div>

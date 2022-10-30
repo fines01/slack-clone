@@ -18,7 +18,7 @@
 
             <div class="profil-name">
                 <span class="profil-name-text">Max Mustermann</span>
-                <button class="profil-name-edit link-button" type="Button">Bearbeiten</button>
+                <button (click)="openEditUser()" class="profil-name-edit link-button" type="Button">Bearbeiten</button>
             </div>
 
             <div class="profil-subtitle">Schüler</div>
@@ -28,7 +28,7 @@
             <div>
                 <button class="button-unstyled">
                     <i></i>
-                    <span>+ Aussprache des Namens hinzufügen</span>
+                    <span (click)="openEditUser()">+ Aussprache des Namens hinzufügen</span>
                 </button>
             </div>
 
@@ -48,8 +48,8 @@
 
 
             <div class="edit-status-div">
-                <button mat-raised-button="basic" style="font-size: 10px">Status einstellen</button>
-                <button mat-icon-button="basic">
+                <button mat-raised-button="basic" class="edit-status-div">Status einstellen</button>
+                <button class="more-vert-div" mat-icon-button="basic">
                     <mat-icon>more_vert</mat-icon>
                 </button>
             </div>
@@ -67,15 +67,20 @@
             <button mat-raised-button="basic"><mat-icon style="font-size: 10px;">mail_outline</mat-icon></button>
 
             <div class="contact-info">
-                <span>E-Mail-Adresse</span>
-                <span><a href>www.maxmustermann@gmx.de</a></span>
+                <div class="info-div">E-Mail-Adresse</div>
+                <div class="info-div"><a href style="color: rgba(var(--sk_highlight, 18, 100, 163), 1);">www.maxmustermann@gmx.de</a></div>
             </div>
 
         </div>
 
-        <div class="phone-div">
+        <div class="e-mail-div">
             <button mat-raised-button="basic"><mat-icon style="font-size:10px;">call</mat-icon></button>
 
+            <div class="contact-info">
+                <div class="info-div">Phone</div>
+                <div class="info-div"><a href style="color: rgba(var(--sk_highlight, 18, 100, 163), 1);">+ Phone hinzufügen</a></div>
+            </div>
+  
         </div>
     </div>
 </div>

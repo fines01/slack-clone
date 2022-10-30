@@ -26,6 +26,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,8 @@ import { FormsModule } from '@angular/forms';
     ChatComponent,
     ChatFieldComponent,
     ChatInputComponent,
+    EditUserDialogComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -51,6 +57,9 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatDialogModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
