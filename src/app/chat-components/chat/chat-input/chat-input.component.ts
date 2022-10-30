@@ -32,7 +32,10 @@ export class ChatInputComponent implements OnInit {
   }
 
   sendMessage() {
-    console.log(this.newMessage);
+    this.chat.message = this.newMessage;
+    this.chat.weight = this.weight;
+    this.chat.italic = this.italic;
+    console.log(this.chat);
     this.weight = false;
     this.italic = false;
     this.newMessage = '';

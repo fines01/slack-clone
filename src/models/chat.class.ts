@@ -5,6 +5,7 @@ export class Chat {
   message: string;
   weight: boolean;
   italic: boolean;
+  chatId: number;
 
   constructor(obj?: any) {
     this.firstName = obj ? obj.firstName : 'Dominik';
@@ -13,6 +14,7 @@ export class Chat {
     this.message = obj ? obj.message : 'Test 1';
     this.weight = obj ? obj.weight : false;
     this.italic = obj ? obj.italic : false;
+    this.chatId = obj ? obj.chatId : 0;
   }
 
   public toJSON() {
@@ -23,6 +25,7 @@ export class Chat {
       message: this.message,
       weight: this.weight,
       italic: this.italic,
+      chatId: this.chatId,
     };
   }
 }
