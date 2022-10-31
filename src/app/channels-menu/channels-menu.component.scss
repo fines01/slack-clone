@@ -1,6 +1,115 @@
 :host {
     display: block;
     height: calc(100vh - 64px);
-    background-color: aqua;
+    background-color: #19171D;
     width: 20%;
+}
+
+header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    h2 {
+        color: #D1D2D3;
+        margin: 0;
+    }
+
+    button {
+        background-color: #D1D2D3;
+    }
+}
+
+.personal-messages {
+    padding: 10px 0 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    a {
+        text-decoration: none;
+        padding: 4px 20px;
+        color: #D1D2D3;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #26232B;
+        }
+
+        mat-icon {
+            margin-right: 10px;
+        }
+    }
+}
+
+.list-container {
+    padding: 10px 0 10px 0;
+}
+
+.list-header {
+    color: #D1D2D3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 20px;
+    cursor: pointer;
+
+    div {
+        display: flex;
+        align-items: center;
+
+        mat-icon {
+            margin-right: 10px;
+
+            &:hover {
+                background-color: #26232B;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    mat-icon {
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: #26232B;
+            border-radius: 5px;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    padding: 4px 20px;
+    color: #D1D2D3;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #26232B;
+    }
+
+    mat-icon {
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+    }
+
+    .add {
+        background-color: #37343D;
+        border-radius: 5px;
+    }
+}
+
+.user-icon {
+    background-color: brown;
+    border-radius: 5px;
 }

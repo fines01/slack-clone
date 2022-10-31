@@ -1,1 +1,80 @@
-<p>channels-menu works!</p>
+<header>
+    <h2>Slack Community</h2>
+    <button mat-icon-button>
+        <mat-icon>edit_note</mat-icon>
+    </button>
+</header>
+
+<div class="personal-messages">
+    <a>
+        <mat-icon>comment</mat-icon> Threads
+    </a>
+    <a>
+        <mat-icon>forum</mat-icon> Direktnachrichten
+    </a>
+    <a>
+        <mat-icon>alternate_email</mat-icon> Erwähnungen & Reaktionen
+    </a>
+    <a>
+        <mat-icon>send</mat-icon> Entwürfe & Gesendet
+    </a>
+</div>
+
+<div class="list-container">
+    <div class="list-header" (click)="toggleChannelList()" (mouseenter)="addChannels=true"
+        (mouseleave)="addChannels=false">
+        <div>
+            <mat-icon *ngIf="toggleChannels">arrow_drop_down</mat-icon>
+            <mat-icon *ngIf="!toggleChannels">arrow_right</mat-icon>
+            <span>Channels</span>
+        </div>
+
+        <mat-icon class="add" *ngIf="addChannels">add</mat-icon>
+    </div>
+    <div *ngIf="toggleChannels">
+        <a>
+            <mat-icon>tag</mat-icon> Channel 1
+        </a>
+        <a>
+            <mat-icon>tag</mat-icon> Channel 2
+        </a>
+        <a>
+            <mat-icon>lock</mat-icon> private Channel
+        </a>
+        <a>
+            <mat-icon>tag</mat-icon> Channel 3
+        </a>
+        <a>
+            <mat-icon class="add">add</mat-icon> Channels hinzufügen
+        </a>
+    </div>
+</div>
+
+<div class="list-container">
+    <div class="list-header" (click)="toggleDMList()" (mouseenter)="addDM=true" (mouseleave)="addDM=false">
+        <div>
+            <mat-icon *ngIf="toggleDM">arrow_drop_down</mat-icon>
+            <mat-icon *ngIf="!toggleDM">arrow_right</mat-icon>
+            <span>Direktnachrichten</span>
+        </div>
+
+        <mat-icon class="add" *ngIf="addDM">add</mat-icon>
+    </div>
+    <div *ngIf="toggleDM">
+        <a>
+            <mat-icon class="user-icon">person</mat-icon> Max Mustermann
+        </a>
+        <a>
+            <mat-icon class="user-icon">person</mat-icon> Sabine Sample
+        </a>
+        <a>
+            <mat-icon class="user-icon">person</mat-icon> Tim Test
+        </a>
+        <a>
+            <mat-icon class="user-icon">person</mat-icon> Peter Probe
+        </a>
+        <a>
+            <mat-icon class="add">add</mat-icon> Team-Mitglieder hinzufügen
+        </a>
+    </div>
+</div>
