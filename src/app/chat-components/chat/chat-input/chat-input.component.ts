@@ -13,6 +13,7 @@ export class ChatInputComponent implements OnInit {
   weight: boolean = false;
   italic: boolean = false;
 
+
   ngOnInit(): void {}
 
   editWeight() {

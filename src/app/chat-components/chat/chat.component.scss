@@ -1,7 +1,7 @@
 :host {
     display: block;
     height: calc(100vh - 64px);
-    background-color: yellow;
+    background-color: #1A1D21;
     width: 50%;
     position: relative;
 }
@@ -9,6 +9,7 @@
 h1 {
     margin-left: 2.5%;
     margin-top: 8px;
+    color: white;
 }
 
 .chat-field-container {
