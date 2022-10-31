@@ -14,7 +14,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 //Emoji Import Data
-// @import '@ctrl/ngx-emoji-mart/picker';
+@import '@ctrl/ngx-emoji-mart/picker';
 
 $fontConfig: (
     display-4: mat.define-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),

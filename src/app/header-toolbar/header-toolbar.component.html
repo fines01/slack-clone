@@ -1,13 +1,29 @@
 <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button class="nav-btn">
         <mat-icon>menu</mat-icon>
     </button>
-    <span>My App</span>
-    <span class="toolbar-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-    </button>
+
+    <div class="center search">
+        <div class="center">
+            <mat-icon class="nav-icon">arrow_back</mat-icon>
+            <mat-icon class="nav-icon">arrow_forward</mat-icon>
+            <mat-icon class="nav-icon">schedule</mat-icon>
+        </div>
+
+        <input placeholder="Placeholder">
+    </div>
+
+    <div class="center">
+        <mat-icon class="nav-icon">help_outline</mat-icon>
+        <mat-icon class="nav-icon">person</mat-icon>
+        <button class="nav-btn">
+            <mat-icon>minimize</mat-icon>
+        </button>
+        <button class="nav-btn">
+            <mat-icon>crop_square</mat-icon>
+        </button>
+        <button class="nav-btn close">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
 </mat-toolbar>
