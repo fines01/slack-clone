@@ -49,7 +49,6 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     EditUserDialogComponent,
     RemoveImgDialogComponent,
     AdjustStatusComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -75,4 +74,4 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
