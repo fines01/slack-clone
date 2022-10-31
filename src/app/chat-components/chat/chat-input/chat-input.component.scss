@@ -1,8 +1,11 @@
     mat-card {
         border-radius: 10px;
-        color: black !important;
         background-color: #1c1e20b9;
-        border: 1px solid grey;
+        border: 1px solid rgba(255, 255, 255, 0.2)
+    }
+    
+    mat-icon {
+        color: white;
     }
     
     .optionen {
@@ -12,17 +15,21 @@
         button {
             background-color: transparent;
             padding: 4px;
+            border-radius: 5px;
             border: 1px solid transparent;
             cursor: pointer;
             &:hover {
                 transition: all 225ms ease-in-out;
-                background-color: rgba(128, 128, 128, 0.128);
+                background-color: rgba(255, 255, 255, 0.2)
             }
         }
     }
     
     .left {
         display: flex;
+        label {
+            margin-right: 8px;
+        }
         button {
             margin-right: 8px;
         }

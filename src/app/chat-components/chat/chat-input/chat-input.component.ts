@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chat } from 'src/models/chat.class';
-
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-chat-input',
   templateUrl: './chat-input.component.html',
@@ -12,6 +12,7 @@ export class ChatInputComponent implements OnInit {
   chat = new Chat();
   weight: boolean = false;
   italic: boolean = false;
+  chatDate = new Date();
 
   ngOnInit(): void {}
 
@@ -32,9 +33,11 @@ export class ChatInputComponent implements OnInit {
   }
 
   sendMessage() {
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
     this.chat.message = this.newMessage;
     this.chat.weight = this.weight;
     this.chat.italic = this.italic;
+    this.chat.chatDate = this.chatDate;
     console.log(this.chat);
     this.weight = false;
     this.italic = false;
