@@ -1,5 +1,15 @@
 mat-card {
     margin-top: 8px;
+    background-color: #1A1D21;
+    box-shadow: none;
+    &:hover {
+        transition: all 225ms ease-in-out;
+        background-color: rgb(50, 50, 50);
+    }
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: none;
 }
 
 .container-field {
