@@ -8,8 +8,10 @@
         </div>
 
         <div class="field-info">
-            <h3> {{chat.firstName}} {{chat.lastName}} </h3>
-
+            <div class="field-detail-user">
+                <h3> {{chat.firstName}} {{chat.lastName}}</h3>
+                <p>14:23 Uhr</p>
+            </div>
             <p [class.fett]="weight" [class.kursive]="italic"> {{chat.message}} </p>
             <!--
             <img src="../assets/img/{{messageImg}}">

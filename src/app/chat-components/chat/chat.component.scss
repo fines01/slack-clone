@@ -1,7 +1,7 @@
 :host {
     display: block;
-    height: calc(100vh - 64px);
-    background-color: yellow;
+    height: calc(100vh - 50px);
+    background-color: #1A1D21;
     width: 50%;
     position: relative;
 }
@@ -22,5 +22,5 @@ h1 {
     width: 95%;
     margin-left: 2.5%;
     position: absolute;
-    bottom: 10px;
+    bottom: 25px;
 }
