@@ -1,6 +1,6 @@
 :host {
     display: block;
-    height: calc(100vh - 64px);
+    height: calc(100vh - 50px);
     background-color: #1A1D21;
     width: 30%;
     color: white;
@@ -124,14 +124,14 @@
     max-width: 180px;
 }
 
-.more-vert-div{
+.more-vert-div {
     height: 12px;
     width: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    mat-icon{
+    mat-icon {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -151,6 +151,7 @@
     font-size: 6px;
     align-items: center;
     height: 20px;
+
     .mat-raised-button {
         padding: 0px 2px 0px 2px;
         display: flex;
@@ -162,6 +163,7 @@
         width: 14px;
         height: 14px;
     }
+
     mat-icon {
         display: flex;
         justify-content: center;
@@ -175,12 +177,12 @@
     flex-direction: column;
 }
 
-.info-div{
+.info-div {
     height: 10px;
     display: flex;
     align-items: center;
-    
-    a{
+
+    a {
         text-decoration: none;
     }
 }

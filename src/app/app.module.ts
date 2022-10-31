@@ -32,7 +32,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { RemoveImgDialogComponent } from './remove-img-dialog/remove-img-dialog.component';
 import { AdjustStatusComponent } from './adjust-status/adjust-status.component';
-// import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,7 @@ import { AdjustStatusComponent } from './adjust-status/adjust-status.component';
     MatMenuModule,
     MatSelectModule,
     MatDialogModule,
-    // PickerModule,
+    PickerModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
