@@ -12,6 +12,16 @@ mat-card {
     box-shadow: none;
 }
 
+mat-icon {
+    color: grey;
+    margin-left: 16px;
+    cursor: pointer;
+    &:hover {
+        transition: all 225ms ease-in-out;
+        color: white;
+    }
+}
+
 .container-field {
     display: flex;
     flex-direction: row;

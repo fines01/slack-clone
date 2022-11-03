@@ -38,7 +38,7 @@ export class ChatInputComponent implements OnInit {
     this.chat.weight = this.weight;
     this.chat.italic = this.italic;
     this.chat.chatDate = this.chatDate;
-    console.log(this.chat);
+    console.log('input', this.chat);
     this.weight = false;
     this.italic = false;
     this.newMessage = '';

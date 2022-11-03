@@ -7,10 +7,16 @@ import { Chat } from 'src/models/chat.class';
   styleUrls: ['./chat-field.component.scss'],
 })
 export class ChatFieldComponent implements OnInit {
-  chat = new Chat();
+  chats = new Chat();
   weight: boolean = false;
   italic: boolean = false;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('field', this.chats);
+  }
+
+  openThread() {
+    console.log('thread open');
+  }
 }
