@@ -14,7 +14,6 @@
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    max-width: 150px;
     padding: 16px 16px 0;
     width: 100%;
 }
@@ -59,7 +58,6 @@
 
 .mat-div{
     width: 100%;
-    font-size: 8px;
 }
 
 .margin-30{
@@ -68,6 +66,7 @@
 
 .footer{
     width: auto;
+    padding-top: 30px;
     height: 40px;
     box-shadow: 0 -0.2px 0 0 white;
     display: flex;
@@ -76,7 +75,6 @@
 }
 
 .footer-btn-div{
-    width: 200px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -85,9 +83,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 8px;
-    height: 20px;
-    margin: 2px;
+    margin: 3px;
 }
 
 .img-btn-div{
