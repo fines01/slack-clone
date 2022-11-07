@@ -25,22 +25,7 @@ export class AuthService {
     private ngAuth: Auth,
   ) {
 
-      console.log(afAuth.authState, getAuth(), getAuth().currentUser)
-
-      // TESt firebase auth from getAuth
-      let authUsr = getAuth();
-      console.log(authUsr.currentUser); //currentUser might also be null because the auth object has not finished initializing. If you use an observer to keep track of the user's sign-in status, you don't  need to handle this case.
-      onAuthStateChanged(authUsr, (user) => {
-        console.log(user); // if user: user is signed in
-        console.log(authUsr.currentUser);
-      })
-
-      // TEST authState from angular/fire/auth
-      authState(this.ngAuth).subscribe((response) => {
-        console.log('response ngAuth:', response);
-      });
-
-      // Save user data in localstorage when logged in and setting up null when logged out
+      //Test  Save user data in localstorage when logged in and setting up null when logged out
       this.afAuth.authState.subscribe((user) => {
         console.log('response afAuth:', user);
         if (user) {
