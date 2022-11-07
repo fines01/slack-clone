@@ -36,6 +36,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire/compat';
+import { ResetPasswordComponent } from './auth-components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     EditUserDialogComponent,
     RemoveImgDialogComponent,
     AdjustStatusComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     

@@ -13,17 +13,17 @@ export class User {
 
 
     constructor(obj?: any){
-        this.uid = obj ? obj.uid : '';
-        this.email = obj ? obj.email : '';
-        this.emailVerified = obj ? obj.emailVerified : '';
-        this.photoURL = obj ? obj.photoURL : '';
-        this.displayName = obj ? obj.displayName : '';
-        this.firstName = obj ? obj.firstName : '';
-        this.lastName = obj ? obj.lastName : '';
-        this.title = obj ? obj.title : '';
-        this.phone = obj ? obj.phone : '';
-        this.status = obj ? obj.status : '';
-        this.isActive = obj ? obj.isActive : '';
+        this.uid = obj.uid ? obj.uid : '';
+        this.email = obj.email ? obj.email : '';
+        this.emailVerified = obj.emailVerified ? obj.emailVerified : false;
+        this.photoURL = obj.photoURL ? obj.photoURL : '';
+        this.displayName = obj.displayName ? obj.displayName : '';
+        this.firstName = obj.firstName ? obj.firstName : '';
+        this.lastName = obj.lastName ? obj.lastName : '';
+        this.title = obj.title ? obj.title : '';
+        this.phone = obj.phone ? obj.phone : '';
+        this.status = obj.status ? obj.status : '';
+        this.isActive = obj.isActive ? obj.isActive : false;
     }
 
     // returns userdata as a json object
@@ -40,8 +40,6 @@ export class User {
             phone: this.phone,
             status: this.status,
             isActive: this.isActive,
-            
-
         }
     }
 }

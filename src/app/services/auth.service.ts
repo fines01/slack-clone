@@ -25,19 +25,33 @@ export class AuthService {
     private ngAuth: Auth,
   ) {
 
-      //Test  Save user data in localstorage when logged in and setting up null when logged out
-      this.afAuth.authState.subscribe((user) => {
-        console.log('response afAuth:', user);
-        if (user) {
-          this.userData = user;
-          localStorage.setItem('user', JSON.stringify(this.userData));
-          JSON.parse(localStorage.getItem('user') !);
-        } else {
-          localStorage.setItem('user', 'null');
-          JSON.parse(localStorage.getItem('user') !);
-        }
-      });
+      onAuthStateChanged(getAuth(), (user) => {
+        console.log(user); // if user: user is signed in
+        console.log(getAuth().currentUser); // same as above
+      })
 
+      // TEST authState from angular/fire/auth
+      // authState(this.ngAuth).subscribe((response) => {
+      //   console.log('response ngAuth:', response); //same as above
+      // });
+
+      // //Test  Save user data in localstorage when logged in and setting up null when logged out
+      // this.afAuth.authState.subscribe((user) => {
+      //   console.log('response afAuth:', user);
+      //   if (user) {
+      //     this.userData = user;
+      //     localStorage.setItem('user', JSON.stringify(this.userData));
+      //     JSON.parse(localStorage.getItem('user') !);
+      //   } else {
+      //     localStorage.setItem('user', 'null');
+      //     JSON.parse(localStorage.getItem('user') !);
+      //   }
+      // });
+
+  }
+
+  get currentAuthUser() {
+    return getAuth().currentUser;
   }
 
   /**
@@ -59,7 +73,7 @@ export class AuthService {
    * 
    */
   logInGuest() {
-    this.afAuth.signInAnonymously()
+    return this.afAuth.signInAnonymously() // & pipe
       .then( (result)=> {
         // set up anonymous account
         this.saveUserData(result.user);

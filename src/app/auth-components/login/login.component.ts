@@ -12,13 +12,13 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup | any;
-  emailSignInSubmitted = false;
+  emailLogInSubmitted = false;
   errorMessage!: string | undefined;
 
   constructor(
     private authService: AuthService,
-    private router: Router,
     private fireService: FirestoreService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(formData: object) {
-    if (this.loginForm.valid) this.emailSignIn();
+    if (this.loginForm.valid) this.emailLogIn();
   }
 
   checkInputsEmpty(){
@@ -54,9 +54,15 @@ export class LoginComponent implements OnInit {
   }
 
   //call signIn Api from authService (Todo)
-  emailSignIn() {
-    this.emailSignInSubmitted = true;
+  emailLogIn() {
+    this.emailLogInSubmitted = true;
     this.errorMessage = undefined;
+    this.authService.logInUser(this.email.value, this.password.value)
+      .then( ()=> {
+        this.emailLogInSubmitted = true;
+        this.router.navigate(['']);
+      })
+      .catch( (error) => this.errorMessage = this.handleError(error));
   }
 
   // handle possible auth errors
@@ -74,7 +80,10 @@ export class LoginComponent implements OnInit {
   googleSignIn() {}
 
   //anonymous log in for guest users: call signIn Api from authService
-  onGuestSignIn() {}
+  onGuestSignIn() {
+    this.emailLogInSubmitted = false;
+    this.authService.logInGuest();
+  }
 
 
 }
