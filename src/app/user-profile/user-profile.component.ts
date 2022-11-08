@@ -3,6 +3,8 @@ import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.co
 import {MatDialog} from '@angular/material/dialog';
 import { AdjustStatusComponent } from '../adjust-status/adjust-status.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/models/user.class';
 
 
 @Component({
@@ -12,12 +14,15 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class UserProfileComponent implements OnInit {
 
-  user: any = {}
+  date = new Date();
+  user: User = new User();
+  activeColor ="grey";
 
-  constructor(public dialog: MatDialog,private firestore: AngularFirestore) { }
+  constructor(public dialog: MatDialog,private firestore: AngularFirestore, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getUser();
+    this.activityStatus();
 
   }
 
@@ -32,11 +37,20 @@ export class UserProfileComponent implements OnInit {
   getUser(){
     this.firestore
     .collection('users')
-    .doc('yliSy6DITTHuWjgw4aDE')
+    .doc('Ck2zBp1TeuaNdEDGrCvDwqQxc732')
     .valueChanges()
     .subscribe((user:any) => {
-      this.user = user;
+      this.user = new User(user);
       console.log(this.user);
     } )
   }
+
+  activityStatus(){
+    if(this.user.isActive == true){
+      console.log('user is active');
+      this.activeColor = "green";
+    }
+  }
+
+
 }

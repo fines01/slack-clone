@@ -7,7 +7,7 @@
 
 <div class="profil-container">
     <div class="profil-img-container">
-            <img class="img avatar-img" src="assets/img/avatar-placeholder.png" alt="">
+            <img class="img avatar-img" src="/assets/img/avatar-placeholder.png" alt="">
       
     </div>
 
@@ -16,23 +16,23 @@
         <div class="profil-section-content">
 
             <div class="profil-name">
-                <span class="profil-name-text">Max Mustermann</span>
+                <span class="profil-name-text">{{user.firstName}} {{user.lastName}}</span>
                 <button (click)="openEditUser()" class="profil-name-edit link-button" type="Button">Bearbeiten</button>
             </div>
 
-            <div class="profil-subtitle">Schüler</div>
+            <div class="profil-subtitle">{{user.title}}</div>
 
             <div class="break-word"></div>
 
             <div>
                 <button class="button-unstyled">
                     <i></i>
-                    <span (click)="openEditUser()">+ Aussprache des Namens hinzufügen</span>
+                    <span (click)="openEditUser()">{{user.namePronunciation}}</span>
                 </button>
             </div>
 
-            <div>
-                <i>...</i>
+            <div class="active-container">
+                <i><div [style.background-color]="activeColor" class="activeIcon"></div></i>
                 <span class="padding-left-50">Aktiv</span>
             </div>
 
@@ -40,7 +40,7 @@
             <div class="margin-top-75">
                 <span class="time">
                     <mat-icon style="font-size: 20px; margin-right: 5px;">access_time
-                    </mat-icon>21:45 Uhr Ortszeit
+                    </mat-icon>{{date | date:'HH:mm'}} Ortszeit
                 </span>
             </div>
 
@@ -67,7 +67,7 @@
 
             <div class="contact-info">
                 <div class="info-div">E-Mail-Adresse</div>
-                <div class="info-div"><a href style="color: rgba(var(--sk_highlight, 18, 100, 163), 1);">www.maxmustermann@gmx.de</a></div>
+                <div class="info-div"><a href style="color: rgba(var(--sk_highlight, 18, 100, 163), 1);">{{user.email}}</a></div>
             </div>
 
         </div>
@@ -77,7 +77,7 @@
 
             <div class="contact-info">
                 <div class="info-div">Phone</div>
-                <div class="info-div"><a href style="color: rgba(var(--sk_highlight, 18, 100, 163), 1);">+ Phone hinzufügen</a></div>
+                <div class="info-div"><a href style="color: rgba(var(--sk_highlight, 18, 100, 163), 1);">{{user.phone}}</a></div>
             </div>
   
         </div>
