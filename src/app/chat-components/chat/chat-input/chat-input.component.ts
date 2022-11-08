@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Chat } from 'src/models/chat.class';
 import { formatDate } from '@angular/common';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
   selector: 'app-chat-input',
   templateUrl: './chat-input.component.html',
   styleUrls: ['./chat-input.component.scss'],
 })
 export class ChatInputComponent implements OnInit {
-  constructor() {}
+  constructor(private firestore: AngularFirestore) {}
   newMessage: string = '';
   chat = new Chat();
   weight: boolean = false;
@@ -33,15 +34,26 @@ export class ChatInputComponent implements OnInit {
   }
 
   sendMessage() {
-    formatDate(new Date(), 'yyyy/MM/dd', 'en');
+    this.addToModels();
+    console.log(this.chat);
+    this.firestore
+      .collection('chat')
+      .add(this.chat.toJSON())
+      .then((resul: any) => {
+        console.log(resul);
+        this.newMessage = '';
+        this.weight = false;
+        this.italic = false;
+      });
+  }
+
+  addToModels() {
     this.chat.message = this.newMessage;
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
     this.chat.weight = this.weight;
     this.chat.italic = this.italic;
     this.chat.chatDate = this.chatDate;
-    console.log('input', this.chat);
-    this.weight = false;
-    this.italic = false;
-    this.newMessage = '';
+    this.chat.chatId + 1;
   }
 
   imageUpload() {
