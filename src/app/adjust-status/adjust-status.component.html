@@ -23,12 +23,13 @@
 
     </div>
 
-    <div>Für dein Workspace
-        <div emoji="&#x1F4C5;"></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="workSpaceDiv">Für dein Workspace
+        <div class="quickInputDiv" *ngFor="let item of quickInput">
+           <div class="quickInputObject"> {{item.emoji}}</div>
+           <div class="quickInputObject">{{item.status}}</div>
+           <div class="quickInputObject"><time>--{{item.time}}</time></div>
+        </div>
+        
     </div>
 
 
