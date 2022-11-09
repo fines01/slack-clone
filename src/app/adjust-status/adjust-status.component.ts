@@ -12,4 +12,12 @@ export class AdjustStatusComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  public textArea: string = '';
+  public isEmojiPickerVisible: boolean = false;
+  public addEmoji(event: any) {
+    this.textArea = `${this.textArea}${event.emoji.native}`;
+    this.isEmojiPickerVisible = false;
+  }
 }
+

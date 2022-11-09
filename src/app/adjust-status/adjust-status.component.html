@@ -2,18 +2,35 @@
 
     <div class="header">
         <div>Status einstellen</div>
-        <div><mat-icon>close</mat-icon></div>
+        <div>
+            <mat-icon>close</mat-icon>
+        </div>
     </div>
 
     <div class="input-div">
-        <button><mat-icon>insert_emoticon</mat-icon></button>
-        <mat-form-field appearance="fill">
+        <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;" class="emoti-btn">
+            <mat-icon>insert_emoticon</mat-icon>
+        </button>
+        <mat-form-field style="width:inherit" appearance="fill">
             <mat-label>Wie lautet dein Status?</mat-label>
-            <input matInput>
-          </mat-form-field>
+            <input ngDefaultControl [(ngModel)]="textArea" matInput>
+        </mat-form-field>
     </div>
 
-    <div></div>
-    <div></div>
-    <div></div>
+    <div class="emoji-container">
+        <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
+            title="Choose your emoji"></emoji-mart>
+
+    </div>
+
+    <div>Für dein Workspace
+        <div emoji="&#x1F4C5;"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+
+    <div class="footer"></div>
 </div>
