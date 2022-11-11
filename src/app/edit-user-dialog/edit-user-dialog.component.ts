@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RemoveImgDialogComponent } from '../remove-img-dialog/remove-img-dialog.component';
+
 
 @Component({
   selector: 'app-edit-user-dialog',
@@ -9,18 +11,35 @@ import { RemoveImgDialogComponent } from '../remove-img-dialog/remove-img-dialog
 })
 export class EditUserDialogComponent implements OnInit {
 
-  foods:any;
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<EditUserDialogComponent>) { }
+  foods: any;
+  constructor(public dialog: MatDialog,
+    public dialogRef: MatDialogRef<EditUserDialogComponent>) { }
+
 
   ngOnInit(): void {
   }
 
-  openImgRemoveDialog(){
+  openImgRemoveDialog() {
     this.dialog.open(RemoveImgDialogComponent);
     this.dialogRef.close(EditUserDialogComponent);
   }
 
-  closeDialog(){
+  uploadImage() {
+    const storage = getStorage();
+    const storageRef = ref(storage, 'some-child');
+
+    /* 'file' comes from the Blob or File API
+
+    uploadBytes(storageRef, file).then((snapshot) => {
+      console.log('Uploaded a blob or file!');
+      
+    });*/
+  }
+
+
+  closeDialog() {
     this.dialogRef.close();
   }
+
+
 }
