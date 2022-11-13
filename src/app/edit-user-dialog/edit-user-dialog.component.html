@@ -32,7 +32,8 @@
             <mat-form-field class="mat-div" appearance="outline">
                 <mat-label>Aussprache des Namens</mat-label>
                 <input matInput>
-                <mat-hint>Das kann eine phonetische Aussprache sein oder ein Beispiel dafür, wie dein Name klingt.</mat-hint>
+                <mat-hint>Das kann eine phonetische Aussprache sein oder ein Beispiel dafür, wie dein Name klingt.
+                </mat-hint>
             </mat-form-field>
 
 
@@ -41,29 +42,34 @@
             <mat-form-field class="mat-div" appearance="fill">
                 <mat-label>Zeitzone</mat-label>
                 <mat-select>
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
+                    <mat-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                    </mat-option>
                 </mat-select>
-              </mat-form-field>
+            </mat-form-field>
         </div>
 
         <div class="edit-img-div">
             <div class="profil-img-container">
                 <div class="profil-img">
-                  <img class="avatar-img" src="assets/img/avatar-placeholder.png">
+                    <img class="avatar-img" src="assets/img/avatar-placeholder.png">
                 </div>
             </div>
 
             <div class="img-btn-div">
-                <button class="btn" mat-raised-button color="primary" (click)="uploadImage()">Foto hochladen</button>
-                <button (click)="openImgRemoveDialog()" class="btn" mat-raised-button color="basic">Foto entfernen</button>
+                <button class="btn" mat-raised-button color="primary">
+                    <label style="display:block;">Foto hochladen
+                        <input style="display:hide" type="file"
+                        (change)="fileSelected($event)">
+                    </label></button>
+                <button (click)="openImgRemoveDialog()" class="btn" mat-raised-button color="basic">Foto
+                    entfernen</button>
             </div>
 
-            
+
         </div>
 
-      
+
     </div>
 
     <div class="footer">
@@ -72,7 +78,7 @@
             <button (click)="closeDialog()" class="btn" mat-raised-button>Abbrechen</button>
             <button class="btn" mat-raised-button color="primary">Änderung speichern</button>
         </div>
-    
+
 
     </div>
 
