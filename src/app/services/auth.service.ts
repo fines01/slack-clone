@@ -8,6 +8,7 @@ import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWit
 
 import { FirestoreService } from './firestore.service';
 import { User } from 'src/models/user.class';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ import { User } from 'src/models/user.class';
 export class AuthService {
 
   userData!: any; // import user class or interface --> save auth user's data.
+  authUser!: any;
 
   constructor(
     private fireService: FirestoreService,
@@ -25,10 +27,10 @@ export class AuthService {
     private ngAuth: Auth,
   ) {
 
-      onAuthStateChanged(getAuth(), (user) => {
-        console.log(user); // if user: user is signed in
-        console.log(getAuth().currentUser); // same as above
-      })
+      // onAuthStateChanged(getAuth(), (user) => {
+      //   console.log(user); // if user: user is signed in // returns: UserImpl
+      //   console.log(getAuth().currentUser); // check: same as above
+      // })
 
       // TEST authState from angular/fire/auth
       // authState(this.ngAuth).subscribe((response) => {
@@ -36,22 +38,20 @@ export class AuthService {
       // });
 
       // //Test  Save user data in localstorage when logged in and setting up null when logged out
-      // this.afAuth.authState.subscribe((user) => {
-      //   console.log('response afAuth:', user);
-      //   if (user) {
-      //     this.userData = user;
-      //     localStorage.setItem('user', JSON.stringify(this.userData));
-      //     JSON.parse(localStorage.getItem('user') !);
-      //   } else {
-      //     localStorage.setItem('user', 'null');
-      //     JSON.parse(localStorage.getItem('user') !);
-      //   }
-      // });
+      this.afAuth.authState.subscribe((user) => {
+        //console.log('response afAuth:', user); returns auth User with auth info (not our User object w all props in db)
+        if (user) {
+          this.userData = user;
+          this.authUser = user;
+          localStorage.setItem('user', JSON.stringify(this.userData));
+          JSON.parse(localStorage.getItem('user') !);
+        } else {
+          localStorage.setItem('user', 'null');
+          JSON.parse(localStorage.getItem('user') !);
+          this.authUser = null;
+        }
+      });
 
-  }
-
-  get currentAuthUser() {
-    return getAuth().currentUser;
   }
 
   /**
@@ -77,7 +77,7 @@ export class AuthService {
       .then( (result)=> {
         // set up anonymous account
         this.saveUserData(result.user);
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
       })
       .catch ( (error)=> console.log('%c'+error, 'color: yellow; background-color: black'));
   }
@@ -111,14 +111,25 @@ export class AuthService {
   /**
    * In production: should check if a user is authenticated and has verified their email
    * For now only checks user status and lets user sign in without verifying their email, so we can work with fake test-emails.
-   * @test gets current user from local storage
+   * @returns {boolean} - reurns true if user is authenticated (and @todo: has verified the email address)
    */
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    // return (user !== null) && (user.emailVerified !== false) ? true : false;
+    // return ( (current user ) && (user.emailVerified === true) ) || (current user is anonymous) ? true : false;
     return (user !== null) || (getAuth().currentUser?.isAnonymous) ? true : false; // for now I won't check for verified emails
   }
 
+  get currentAuthUser() {
+    return getAuth().currentUser; // maybe better to get an observable, but maybe not always necessary
+  }
+
+  /**
+   * 
+   * @returns {Observable<firebase.User | null>} firbase auth User with auth information
+   */
+  getAuthState(){
+    return this.afAuth.authState;
+  }
 
   /**
   * Sends E-Mail verification 
