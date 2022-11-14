@@ -336,10 +336,6 @@ button {
     text-align: center;
 }
 
-.margin-top-50 {
-    font-size: 10px;
-}
-
 .margin-bottom-50 {
     margin-bottom: 8px;
 }
@@ -362,3 +358,25 @@ button {
     width: 100%;
     border-radius: 8px;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

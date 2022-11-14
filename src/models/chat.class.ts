@@ -12,7 +12,7 @@ export class Chat {
     this.firstName = obj ? obj.firstName : 'Dominik';
     this.lastName = obj ? obj.lastName : 'Graf';
     this.profilImg = obj ? obj.profilImg : 'ghost.png';
-    this.message = obj ? obj.message : 'Test 1';
+    this.message = obj ? obj.message : '';
     this.weight = obj ? obj.weight : false;
     this.italic = obj ? obj.italic : false;
     this.chatId = obj ? obj.chatId : 0;

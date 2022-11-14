@@ -33,6 +33,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { RemoveImgDialogComponent } from './remove-img-dialog/remove-img-dialog.component';
 import { AdjustStatusComponent } from './adjust-status/adjust-status.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { AngularFireModule } from '@angular/fire/compat';
+import { ResetPasswordComponent } from './auth-components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +53,10 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     EditUserDialogComponent,
     RemoveImgDialogComponent,
     AdjustStatusComponent,
+    ResetPasswordComponent,
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
@@ -66,12 +72,17 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     MatDialogModule,
     PickerModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    provideAnalytics(() => getAnalytics()),
+    provideDatabase(() => getDatabase()),
   ],
-  providers: [],
+  providers: [
+    ScreenTrackingService,UserTrackingService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

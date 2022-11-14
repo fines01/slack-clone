@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,7 +10,7 @@ import { CustomValidators } from 'src/models/custom-validators.class';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   registerForm!: FormGroup | any;
   errorMessage!: string | undefined;
@@ -37,6 +37,10 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  ngOnDestroy(): void {
+    if (this.userSubscription) this.userSubscription.unsubscribe();
+  }
+
   get userName() {
     return this.registerForm.get('userName');
   }
@@ -54,50 +58,47 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(formData: object) {
-    // console.log(formData);
-
+    console.log(this.email.value, this.userName.value);
+    if (this.registerForm.valid) this.registerWithEmail();
   }
   
-  setUpExistingUserData(authUser: any) {
-  }
-
-  ngOnDestroy(): void {
-    
-  }
-
-  emailSignUp() {
-    // If anonyous user: generate credential and link account
+  registerWithEmail() {
+    // If anonymous user: generate credential and link account
+    let currentUser = this.authService.currentAuthUser;
+    if (currentUser && currentUser.isAnonymous) {
+      this.authService.linkAnonymousAccount(this.email.value, this.password.value, this.userName.value);
+      this.setUpExistingUserData(currentUser);
+    }
+    else (this.authService.registerNewUser(this.email.value, this.password.value, this.userName.value))
+      .then( (result) => {
+        if (result) this.authService.setUpAccount(result.user, this.userName.value);
+      })
+      .catch( (err) => this.errorMessage = this.handleError(err));
   }
 
   handleError(error: any): string {
     console.log('%c'+ error.code + '\n' + error.message, 'color: yellow; background-color: black'); //
-    if (error.code === 'auth/email-already-exists') return 'User with this email already exists';
+    if (error.code === 'auth/email-already-exists' || 'auth/email-already-in-use') return 'User with this email already exists';
     if (error.code === 'auth/invalid-email') return 'Please provide a valid Email Address';
     if (error.code === 'auth/invalid-password') return 'Password must have at least 6 characters';
     return 'Oops, something went wrong. Please try again later';
   }
 
-  // call googleAuth Api from authService
-  googleSignIn() {
+  setUpExistingUserData(authUser: any) {
+    this.userSubscription = this.fireService.getDocByID(authUser.uid, 'users')
+      .subscribe( (userData: any)=>{
+        if (userData)  {
+          let user = userData;
+          user.displayName = this.userName.value;
+          user.email = this.email.value;
+          // TODO add further userdata that might already exist on guest user account
+          this.fireService.createOrUpdateDoc(user, authUser.uid, 'users');
+          //this.authService.setUserData(user)
+        }
+      });
   }
 
-  // // put elsewhere (in utils? service? class?) --> in class as static method (because it seems consistent with how I use the 'Validators.function()' methods )
-  // private  matchStrings(controlString: string, checkString: string): ValidatorFn {
-  //     return (controls: AbstractControl) => {
-  //       let control = controls.get(controlString);
-  //       let checkControl = controls.get(checkString);
-
-  //       if (checkControl?.errors && !checkControl.errors['matching']) return null;
-
-  //       if (control?.value !== checkControl?.value) {
-  //         controls.get(checkString)?.setErrors({ matching: true });
-  //         return { matching: true };
-  //       } else {
-  //         controls.get(checkString)?.setErrors(null);
-  //         return null;
-  //       }
-  //     };
-  //   }
-  
+  // Todo: create & call googleAuth api from authService
+  googleSignIn() {}
 
 }
