@@ -40,7 +40,8 @@ export class ChatInputComponent implements OnInit {
 
   sendMessage() {
     this.addToModels();
-    console.log('user',this.user.firstName)
+    console.log('user firstname',this.user.firstName);
+    console.log('user lastname',this.user.lastName);
     this.firestore
       .collection('chat')
       .add(this.chat.toJSON())
@@ -62,4 +63,17 @@ export class ChatInputComponent implements OnInit {
   imageUpload() {
     console.log('test');
   }
+
+
+  // getUser(){
+  //   this.firestore
+  //   .collection('users')
+  //   .doc('Ck2zBp1TeuaNdEDGrCvDwqQxc732')
+  //   .valueChanges()
+  //   .subscribe((user:any) => {
+  //     this.user = new User(user);
+  //     console.log('user daten',this.user);
+  //   } )
+  // }
+
 }
