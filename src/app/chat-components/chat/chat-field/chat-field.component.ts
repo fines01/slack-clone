@@ -21,7 +21,7 @@ export class ChatFieldComponent implements OnInit {
 
     return this.firestore
       .collection(chat, queryFn)
-      .valueChanges({idField: 'id'}) //returns collection / Observable that can be subscribed inside the component
+      .valueChanges({idField: 'id'}).pipe(tap(idField => console.log(idField))) //returns collection / Observable that can be subscribed inside the component
     }
 
 
@@ -31,18 +31,9 @@ export class ChatFieldComponent implements OnInit {
     );
   }
 
-  openThread() {
-    console.log('thread open');
+  openThread(id:any) {
+    console.log('thread open from', id);
+    //chat anhand der ID öffnen
   }
-
-
-
-//   getData() {
-//     return this.firestore
-//    .collection("chat")
-//    .snapshotChanges();
-//    console.log('chat angekommen')
-//  }
-
 
 }
