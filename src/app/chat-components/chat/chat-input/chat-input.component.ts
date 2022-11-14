@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Chat } from 'src/models/chat.class';
 import { formatDate } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Subscription } from 'rxjs';
+import { User } from 'src/models/user.class';
+
+
 @Component({
   selector: 'app-chat-input',
   templateUrl: './chat-input.component.html',
@@ -14,6 +18,7 @@ export class ChatInputComponent implements OnInit {
   weight: boolean = false;
   italic: boolean = false;
   chatDate = new Date().toLocaleDateString('de-de');
+  user: User = new User();
 
   ngOnInit(): void {}
 
@@ -35,7 +40,7 @@ export class ChatInputComponent implements OnInit {
 
   sendMessage() {
     this.addToModels();
-    console.log(this.chat);
+    console.log('user',this.user.firstName)
     this.firestore
       .collection('chat')
       .add(this.chat.toJSON())

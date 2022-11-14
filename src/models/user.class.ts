@@ -13,8 +13,8 @@ export class User {
     isActive: boolean = false;
 
 
-    // ACHTUNG jede einzelne Property überprüfen (ob sie vorhanden ist) 
-    // sonst gibt es Fehler wenn ich nur einzelne Werte updaten will 
+    // ACHTUNG jede einzelne Property überprüfen (ob sie vorhanden ist)
+    // sonst gibt es Fehler wenn ich nur einzelne Werte updaten will
     // bsp.: beim registrieren v usern: registrieren sich nur mit usernamen, email,... alle anderen Werte können säter upgedatet werden aber ich müsste ich sonst jeden einzelnen wert leer übergeben um den User in der Db anlegen zu können.
     constructor(obj?: any){
         this.uid = (obj && obj.uid) ? obj.uid : '';
