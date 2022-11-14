@@ -1,20 +1,23 @@
-<mat-card ngFor="let chats of chat" >
+<!-- {{chats$ | async | json}} -->
+
+
+<mat-card *ngFor="let chat of chats$ | async" >
     <div  class="container-field">
 
         <div>
 
-            <img src="../assets/img/{{chats.profilImg}}">
+            <img src="../assets/img/{{chat.profilImg}}">
 
         </div>
 
         <div class="field-info">
             <div class="field-detail-user">
-                <h3> {{chats.firstName}} {{chats.lastName}}
+                <h3> {{chat.firstName}} {{chat.lastName}}
                 </h3>
-                <p>14:23 Uhr</p>
+                <p>{{chat.chatDate | date : 'dd.MM.yyyy HH:mm' : 'de'}}</p>
                 <mat-icon (click)="openThread()">chat</mat-icon>
             </div>
-            <p [class.fett]="weight" [class.kursive]="italic"> {{chats.message}} </p>
+            <p [class.fett]="chat.weight" [class.kursive]="chat.italic"> {{chat.message}} </p>
             <!--
             <img src="../assets/img/{{messageImg}}">
             -->

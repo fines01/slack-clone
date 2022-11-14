@@ -13,7 +13,7 @@ export class ChatInputComponent implements OnInit {
   chat = new Chat();
   weight: boolean = false;
   italic: boolean = false;
-  chatDate = new Date();
+  chatDate = new Date().toLocaleDateString('de-de');
 
   ngOnInit(): void {}
 
@@ -49,11 +49,9 @@ export class ChatInputComponent implements OnInit {
 
   addToModels() {
     this.chat.message = this.newMessage;
-    formatDate(new Date(), 'yyyy/MM/dd', 'en');
     this.chat.weight = this.weight;
     this.chat.italic = this.italic;
-    this.chat.chatDate = this.chatDate;
-    this.chat.chatId + 1;
+    this.chat.chatDate = new Date().getTime();
   }
 
   imageUpload() {
