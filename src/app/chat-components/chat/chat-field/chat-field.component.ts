@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Chat } from 'src/models/chat.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, tap } from 'rxjs';
+
 
 
 
@@ -11,7 +12,10 @@ import { Observable, tap } from 'rxjs';
   styleUrls: ['./chat-field.component.scss'],
 })
 export class ChatFieldComponent implements OnInit {
+  @Output() openThreadComponent: boolean = true;
+
   chats$!: Observable<any[]>;
+;
 
   constructor(private firestore: AngularFirestore) {}
 
@@ -33,6 +37,7 @@ export class ChatFieldComponent implements OnInit {
   openThread(id:any) {
     console.log('thread open from', id);
     //chat anhand der ID öffnen
+    this.openThreadComponent = !this.openThreadComponent;
   }
 
 }

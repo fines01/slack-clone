@@ -1,0 +1,30 @@
+
+h1 {
+    margin-left: 2.5%;
+    margin-top: 8px;
+    color: white;
+}
+
+.thread-top-name {
+  display: flex;
+  align-items: center;
+  height: 61px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btm-chat-input {
+  width: 95%;
+  margin-left: 2.5%;
+  position: absolute;
+  bottom: 25px;
+}
+.chat-container{
+  overflow-y: auto;
+  height: 78%;
+}
+
+.chat-field-container {
+  margin-top: 8px;
+  width: 95%;
+  margin-left: 2.5%;
+}

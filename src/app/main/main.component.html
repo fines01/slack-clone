@@ -2,5 +2,9 @@
 <div class="main-content">
     <app-channels-menu></app-channels-menu>
     <app-chat></app-chat>
+    <!-- Thread Container dann einblenden, wenn thread angewähltr wird -->
+    <div class="thread-container" *ngIf="openThreadComponent==true" >
+<app-thread-container></app-thread-container>
+    </div>
     <app-user-profile></app-user-profile>
 </div>

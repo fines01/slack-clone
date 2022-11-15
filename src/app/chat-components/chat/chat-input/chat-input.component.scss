@@ -1,75 +1,77 @@
-    mat-card {
-        border-radius: 10px;
-        background-color: #1c1e20b9;
-        border: 1px solid rgba(255, 255, 255, 0.2)
+mat-card {
+  border-radius: 10px;
+  background-color: #1c1e20b9;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+mat-icon {
+  color: white;
+}
+
+.optionen {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  button {
+    background-color: transparent;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    &:hover {
+      transition: all 225ms ease-in-out;
+      background-color: rgba(255, 255, 255, 0.2);
     }
+  }
+}
 
-    mat-icon {
-        color: white;
-    }
+.left {
+  display: flex;
+  label {
+    margin-right: 8px;
+  }
+  button {
+    margin-right: 8px;
+  }
+}
 
-    .optionen {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 8px;
-        button {
-            background-color: transparent;
-            padding: 4px;
-            border-radius: 5px;
-            border: 1px solid transparent;
-            cursor: pointer;
-            &:hover {
-                transition: all 225ms ease-in-out;
-                background-color: rgba(255, 255, 255, 0.2)
-            }
-        }
-    }
+.right {
+  display: flex;
+}
 
-    .left {
-        display: flex;
-        label {
-            margin-right: 8px;
-        }
-        button {
-            margin-right: 8px;
-        }
-    }
+.fett {
+  font-weight: 900;
+}
 
-    .right {
-        display: flex;
-    }
+.kursive {
+  font-style: italic;
+}
 
-    .fett {
-        font-weight: 900;
-    }
+label {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    transition: all 225ms ease-in-out;
+    background-color: rgba(128, 128, 128, 0.128);
+  }
+}
 
-    .kursive {
-        font-style: italic;
-    }
+#upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
 
-    label {
-        cursor: pointer;
-        background-color: transparent;
-        padding: 4px;
-        border: 1px solid transparent;
-        cursor: pointer;
-        &:hover {
-            transition: all 225ms ease-in-out;
-            background-color: rgba(128, 128, 128, 0.128);
-        }
-    }
-
-    #upload-photo {
-        opacity: 0;
-        position: absolute;
-        z-index: -1;
-    }
-
-
-.emoji-container{
+.emoji-container {
   position: absolute;
   top: -350px;
   display: grid;
   grid-template-columns: 100% 0%;
   width: 36%;
+}
+.file-input {
+  display: none;
 }

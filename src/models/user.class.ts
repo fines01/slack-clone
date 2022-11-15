@@ -20,7 +20,7 @@ export class User {
         this.uid = (obj && obj.uid) ? obj.uid : '';
         this.email = (obj && obj.email) ? obj.email : '';
         this.emailVerified = (obj && obj.emailVerified) ? obj.emailVerified : false;
-        this.photoURL = (obj && obj.photoURL) ? obj.photoURL : 'src/assets/img/avatar-placeholder.png';
+        this.photoURL = (obj && obj.photoURL) ? obj.photoURL : '../assets/img/avatar-placeholder.png';
         this.displayName = (obj && obj.displayName) ? obj.displayName : '';
         this.firstName = (obj && obj.firstName) ? obj.firstName : '';
         this.lastName = (obj && obj.lastName) ? obj.lastName : '';

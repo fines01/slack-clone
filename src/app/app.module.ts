@@ -37,6 +37,9 @@ import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ResetPasswordComponent } from './auth-components/reset-password/reset-password.component';
+import { InputComponent } from './thread/input/input.component';
+import { FieldComponent } from './thread/field/field.component';
+import { ThreadContainerComponent } from './thread/thread-container/thread-container.component';
 
 @NgModule({
   declarations: [
@@ -54,9 +57,12 @@ import { ResetPasswordComponent } from './auth-components/reset-password/reset-p
     RemoveImgDialogComponent,
     AdjustStatusComponent,
     ResetPasswordComponent,
+    InputComponent,
+    FieldComponent,
+    ThreadContainerComponent,
   ],
   imports: [
-    
+
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,

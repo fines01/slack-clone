@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Chat } from 'src/models/chat.class';
-import { formatDate } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Subscription } from 'rxjs';
-import { User } from 'src/models/user.class';
-import { Observable, tap } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
-// import { HttpClient } from '@angular/common/http';
+import { Chat } from 'src/models/chat.class';
+import { User } from 'src/models/user.class';
 
 @Component({
-  selector: 'app-chat-input',
-  templateUrl: './chat-input.component.html',
-  styleUrls: ['./chat-input.component.scss'],
+  selector: 'app-input',
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.scss']
 })
-export class ChatInputComponent implements OnInit {
-  constructor(private firestore: AngularFirestore, private authService: AuthService, private fireService: FirestoreService) { }
+export class InputComponent implements OnInit {
+
+  constructor(private firestore: AngularFirestore, private authService: AuthService, private fireService: FirestoreService) {}
   newMessage: string = '';
   chat = new Chat();
   weight: boolean = false;
@@ -23,8 +21,6 @@ export class ChatInputComponent implements OnInit {
   chatDate = new Date().toLocaleDateString('de-de');
   user: User = new User();
   authUserData!: any;
-
-  fileName:any = '';
 
   userSubscription!: Subscription;
   authStateSubscription!: Subscription;
@@ -36,28 +32,41 @@ export class ChatInputComponent implements OnInit {
   }
 
   editWeight() {
-    this.weight = !this.weight
+    if (this.weight == false) {
+      this.weight = true;
+    } else {
+      this.weight = false;
+    }
   }
 
   editItalic() {
-    this.italic = !this.italic
+    if (this.italic == false) {
+      this.italic = true;
+    } else {
+      this.italic = false;
+    }
   }
 
+
   //Emoji picker code
+  public textArea: string = '';
   public isEmojiPickerVisible: boolean = false;
   public addEmoji(event: any) {
-    this.newMessage = `${this.newMessage}${event.emoji.native}`;
+    this.textArea = `${this.textArea}${event.emoji.native}`;
     this.isEmojiPickerVisible = false;
   }
 
 
   sendMessage() {
     this.addToModels();
-
     this.firestore
       .collection('chat')
       .add(this.chat.toJSON())
-      .then((result: any) => {
+      .then((resul: any) => {
+        this.chat.firstName;
+        this.chat.lastName,
+        this.chat.displayName,
+        this.chat.profilImg,
         this.newMessage = '';
         this.weight = false;
         this.italic = false;
@@ -65,10 +74,10 @@ export class ChatInputComponent implements OnInit {
   }
 
   addToModels() {
-    this.chat.firstName = this.user.firstName;
-    this.chat.lastName = this.user.lastName;
-    this.chat.displayName = this.user.displayName;
-    this.chat.profilImg = this.user.photoURL;
+    this.chat.firstName=this.user.firstName;
+    this.chat.lastName=this.user.lastName;
+    this.chat.displayName=this.user.displayName;
+    this.chat.profilImg=this.user.photoURL;
     this.chat.message = this.newMessage;
     this.chat.weight = this.weight;
     this.chat.italic = this.italic;
@@ -80,18 +89,18 @@ export class ChatInputComponent implements OnInit {
     if (this.authStateSubscription) this.authStateSubscription.unsubscribe();
   }
 
-  subscribeAuthState() {
+  subscribeAuthState(){
     this.authStateSubscription = this.authService.getAuthState()
-      .subscribe((authUser) => {
+      .subscribe( (authUser) => {
         if (authUser) this.authUserData = authUser;
         if (this.authUserData) this.subscribeCurrentUser()
         else this.userSubscription.unsubscribe();
       });
   }
 
-  subscribeCurrentUser() {
+  subscribeCurrentUser(){
     this.userSubscription = this.fireService.getDocByID(this.authUserData.uid, 'users')
-      .subscribe((user: any) => {
+      .subscribe( (user:any)=>{
         this.user = new User(user);
         if (this.authUserData.isAnonymous && user.displayName == '') {
           this.user.displayName = 'Guest';
@@ -103,24 +112,6 @@ export class ChatInputComponent implements OnInit {
     console.log('imageUpload');
   }
 
-//   onFileSelected(event) {
 
-//     const file:File = $event.target.files[0];
-
-//     if (file) {
-
-//         this.fileName = file.name;
-
-//         const formData = new FormData();
-
-//         formData.append("thumbnail", file);
-
-//         const upload$ = this.http.post("/api/thumbnail-upload", formData);
-
-//         upload$.subscribe();
-//     }
-// }
 
 }
-
-
