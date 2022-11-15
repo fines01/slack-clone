@@ -59,6 +59,7 @@ export class ChatInputComponent implements OnInit {
         this.urlImage='';
         this.weight = false;
         this.italic = false;
+        this.progressInfo=0;
       });
   }
 
@@ -98,7 +99,9 @@ export class ChatInputComponent implements OnInit {
       });
   }
 
+
 //Upload Image mit Firebase Storage
+progressInfo:number=0;
 urlImage:string='';
 chooseFile(event: any){
   this.file = event.target.files[0];
@@ -114,7 +117,9 @@ uploadTask.on('state_changed',
   (snapshot) => {
     // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    this.progressInfo = progress
     console.log('Upload is ' + progress + '% done');
+    console.log('hier name',this.file.name)
     switch (snapshot.state) {
       case 'paused':
         console.log('Upload is paused');

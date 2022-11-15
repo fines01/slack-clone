@@ -41,6 +41,7 @@ import { InputComponent } from './thread/input/input.component';
 import { FieldComponent } from './thread/field/field.component';
 import { ThreadContainerComponent } from './thread/thread-container/thread-container.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularImageViewerModule } from "@hreimer/angular-image-viewer";
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { HttpClientModule } from '@angular/common/http';
     PickerModule,
     FormsModule,
     HttpClientModule,
+    AngularImageViewerModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

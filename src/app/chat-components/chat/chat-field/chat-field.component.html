@@ -18,9 +18,10 @@
                 <mat-icon (click)="openThread(chat.id)">chat</mat-icon>
             </div>
             <p [class.fett]="chat.weight" [class.kursive]="chat.italic"> {{chat.message}} </p>
-            <div>
-            <img src="{{chat.messageImg}}">
+            <div *ngIf="chat.messageImg !== ''">
+            <img class="messageImg" [class.big]="big" src="{{chat.messageImg}}" (click)="open(0)" >
             </div>
+
           </div>
 
     </div>

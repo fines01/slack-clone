@@ -13,7 +13,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class ChatFieldComponent implements OnInit {
   @Output() openThreadComponent: boolean = true;
-
+big:boolean=false;
   chats$!: Observable<any[]>;
 ;
 
@@ -39,5 +39,11 @@ export class ChatFieldComponent implements OnInit {
     //chat anhand der ID öffnen
     this.openThreadComponent = !this.openThreadComponent;
   }
+
+  open(i:any){
+    console.log('anzahl',i.lenght);
+this.big = !this.big
+  }
+
 
 }

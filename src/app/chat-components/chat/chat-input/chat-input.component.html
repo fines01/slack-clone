@@ -13,8 +13,8 @@
         <mat-icon> insert_photo</mat-icon>
       <input type="file" name="upload-photo" id="upload-photo"  (change)="chooseFile($event)"/>
     </label>
-<!-- <input type="file" (change)="chooseFile($event)" > -->
-<col>
+
+
       <button (click)="editWeight()">
         <mat-icon> line_weight</mat-icon>
       </button>
@@ -29,6 +29,12 @@
       <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
         title="Choose your emoji"></emoji-mart>
     </div>
+
+
+<div *ngIf="this.progressInfo > 0" >
+<p>{{this.file.name}} {{this.progressInfo}}%</p>
+</div>
+
 
     <div class="right">
       <button type="submit" *ngIf="this.newMessage" (click)="sendMessage()">
