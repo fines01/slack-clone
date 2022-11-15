@@ -18,10 +18,10 @@
                 <mat-icon (click)="openThread(chat.id)">chat</mat-icon>
             </div>
             <p [class.fett]="chat.weight" [class.kursive]="chat.italic"> {{chat.message}} </p>
-            <!--
-            <img src="../assets/img/{{messageImg}}">
-            -->
-        </div>
+            <div>
+            <img src="{{chat.messageImg}}">
+            </div>
+          </div>
 
     </div>
 

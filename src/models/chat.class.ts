@@ -3,6 +3,7 @@ export class Chat {
   lastName: string;
   profilImg: string;
   message: string;
+  messageImg: string;
   weight: boolean;
   italic: boolean;
   chatId: number;
@@ -14,6 +15,7 @@ export class Chat {
     this.lastName = obj ? obj.lastName : '';
     this.profilImg = obj ? obj.profilImg : '';
     this.message = obj ? obj.message : '';
+    this.messageImg = obj ? obj.messageImg : '';
     this.weight = obj ? obj.weight : false;
     this.italic = obj ? obj.italic : false;
     this.chatId = obj ? obj.chatId : 0;
@@ -27,6 +29,7 @@ export class Chat {
       lastName: this.lastName,
       profilImg: this.profilImg,
       message: this.message,
+      messageImg: this.messageImg,
       weight: this.weight,
       italic: this.italic,
       chatId: this.chatId,

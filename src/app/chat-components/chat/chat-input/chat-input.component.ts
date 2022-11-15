@@ -7,7 +7,9 @@ import { User } from 'src/models/user.class';
 import { Observable, tap } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
-// import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-chat-input',
@@ -15,7 +17,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./chat-input.component.scss'],
 })
 export class ChatInputComponent implements OnInit {
-  constructor(private firestore: AngularFirestore, private authService: AuthService, private fireService: FirestoreService) { }
+  constructor(private firestore: AngularFirestore, private authService: AuthService, private fireService: FirestoreService,private http: HttpClient, public storage: Storage) { }
   newMessage: string = '';
   chat = new Chat();
   weight: boolean = false;
@@ -23,16 +25,12 @@ export class ChatInputComponent implements OnInit {
   chatDate = new Date().toLocaleDateString('de-de');
   user: User = new User();
   authUserData!: any;
-
-  fileName:any = '';
-
+  public file:any={};
   userSubscription!: Subscription;
   authStateSubscription!: Subscription;
 
   ngOnInit(): void {
     this.subscribeAuthState();
-
-
   }
 
   editWeight() {
@@ -53,12 +51,12 @@ export class ChatInputComponent implements OnInit {
 
   sendMessage() {
     this.addToModels();
-
     this.firestore
       .collection('chat')
       .add(this.chat.toJSON())
       .then((result: any) => {
         this.newMessage = '';
+        this.urlImage='';
         this.weight = false;
         this.italic = false;
       });
@@ -69,6 +67,7 @@ export class ChatInputComponent implements OnInit {
     this.chat.lastName = this.user.lastName;
     this.chat.displayName = this.user.displayName;
     this.chat.profilImg = this.user.photoURL;
+    this.chat.messageImg = this.urlImage;
     this.chat.message = this.newMessage;
     this.chat.weight = this.weight;
     this.chat.italic = this.italic;
@@ -99,28 +98,58 @@ export class ChatInputComponent implements OnInit {
       });
   }
 
-  imageUpload() {
-    console.log('imageUpload');
+//Upload Image mit Firebase Storage
+urlImage:string='';
+chooseFile(event: any){
+  this.file = event.target.files[0];
+  this.addData();
+}
+ metadata:any = {
+  contentType: 'image/jpeg'}
+
+addData(){
+const storageRef = ref(this.storage,this.file.name);
+const uploadTask = uploadBytesResumable(storageRef, this.file,this.metadata );
+uploadTask.on('state_changed',
+  (snapshot) => {
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case 'paused':
+        console.log('Upload is paused');
+        break;
+      case 'running':
+        console.log('Upload is running');
+        break;
+    }
+  },
+  (error) => {
+    // A full list of error codes is available at
+    // https://firebase.google.com/docs/storage/web/handle-errors
+    switch (error.code) {
+      case 'storage/unauthorized':
+        // User doesn't have permission to access the object
+        break;
+      case 'storage/canceled':
+        // User canceled the upload
+        break;
+
+      // ...
+
+      case 'storage/unknown':
+        // Unknown error occurred, inspect error.serverResponse
+        break;
+    }
+  },
+  () => {
+    // Upload completed successfully, now we can get the download URL
+    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      console.log('File available at', downloadURL);
+      this.urlImage=downloadURL;
+    });
   }
-
-//   onFileSelected(event) {
-
-//     const file:File = $event.target.files[0];
-
-//     if (file) {
-
-//         this.fileName = file.name;
-
-//         const formData = new FormData();
-
-//         formData.append("thumbnail", file);
-
-//         const upload$ = this.http.post("/api/thumbnail-upload", formData);
-
-//         upload$.subscribe();
-//     }
-// }
-
+);
 }
 
-
+}

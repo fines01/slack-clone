@@ -11,23 +11,9 @@
     <div class="left">
       <label for="upload-photo">
         <mat-icon> insert_photo</mat-icon>
-      </label>
-      <!-- Info-Link: https://blog.angular-university.io/angular-file-upload/ -->
-      <input type="file" name="upload-photo" id="upload-photo" onchange="console.log(event.target.files)" />
-
-
-      <!-- <input type="file" class="file-input"
-      (change)="onFileSelected(event)" #fileUpload>
-
-<div class="file-upload">
-
-  {{fileName || "No file uploaded yet."}}
-
-   <button mat-mini-fab color="primary" class="upload-btn"
-     (click)="fileUpload.click()">
-       <mat-icon>attach_file</mat-icon>
-   </button>
-</div> -->
+      <input type="file" name="upload-photo" id="upload-photo"  (change)="chooseFile($event)"/>
+    </label>
+<!-- <input type="file" (change)="chooseFile($event)" > -->
 <col>
       <button (click)="editWeight()">
         <mat-icon> line_weight</mat-icon>

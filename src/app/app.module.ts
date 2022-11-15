@@ -40,6 +40,7 @@ import { ResetPasswordComponent } from './auth-components/reset-password/reset-p
 import { InputComponent } from './thread/input/input.component';
 import { FieldComponent } from './thread/field/field.component';
 import { ThreadContainerComponent } from './thread/thread-container/thread-container.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { ThreadContainerComponent } from './thread/thread-container/thread-conta
     MatDialogModule,
     PickerModule,
     FormsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
