@@ -21,14 +21,13 @@ export class ChatFieldComponent implements OnInit {
 
     return this.firestore
       .collection(chat, queryFn)
-      .valueChanges({idField: 'id'}).pipe(tap(idField => console.log(idField))) //returns collection / Observable that can be subscribed inside the component
+      .valueChanges({idField: 'id'}).pipe(tap()); //returns collection / Observable that can be subscribed inside the component
     }
 
 
   ngOnInit(): void {
     this.chats$ = this.getCollection("chat", "chatDate").pipe(
-      tap(data => console.log(data))
-    );
+      tap());
   }
 
   openThread(id:any) {

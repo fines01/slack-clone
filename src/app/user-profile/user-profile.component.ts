@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   userSubscription!: Subscription;
   authStateSubscription!: Subscription;
 
-  constructor(public dialog: MatDialog,private firestore: AngularFirestore, private route: ActivatedRoute, 
+  constructor(public dialog: MatDialog,private firestore: AngularFirestore, private route: ActivatedRoute,
     private authService: AuthService, private fireService: FirestoreService) { }
 
   ngOnInit(): void {
@@ -75,7 +75,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.userSubscription = this.fireService.getDocByID(this.authUserData.uid, 'users')
       .subscribe( (user:any)=>{
         this.user = new User(user);
-        console.log('current user: ', this.user);
+        // console.log('current user: ', this.user);
 
         if (this.authUserData.isAnonymous && user.displayName == '') {
           this.user.displayName = 'Guest';

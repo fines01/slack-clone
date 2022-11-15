@@ -9,9 +9,9 @@ export class Chat {
   chatDate: any;
 
   constructor(obj?: any) {
-    this.firstName = obj ? obj.firstName : 'Max';
-    this.lastName = obj ? obj.lastName : 'Muster';
-    this.profilImg = obj ? obj.profilImg : 'ghost.png';
+    this.firstName = obj ? obj.firstName : '';
+    this.lastName = obj ? obj.lastName : '';
+    this.profilImg = obj ? obj.profilImg : '';
     this.message = obj ? obj.message : '';
     this.weight = obj ? obj.weight : false;
     this.italic = obj ? obj.italic : false;
