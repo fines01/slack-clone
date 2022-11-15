@@ -48,17 +48,25 @@ export class ChatInputComponent implements OnInit {
     }
   }
 
-  sendMessage() {
 
+  //Emoji picker code
+  public textArea: string = '';
+  public isEmojiPickerVisible: boolean = false;
+  public addEmoji(event: any) {
+    this.textArea = `${this.textArea}${event.emoji.native}`;
+    this.isEmojiPickerVisible = false;
+  }
+
+
+  sendMessage() {
     this.addToModels();
     this.firestore
       .collection('chat')
       .add(this.chat.toJSON())
       .then((resul: any) => {
-        // this.chat.firstName = this.user.firstName;
-        // this.chat.lastName=this.user.lastName;
         this.chat.firstName;
         this.chat.lastName,
+        this.chat.displayName,
         this.chat.profilImg,
         this.newMessage = '';
         this.weight = false;
@@ -69,6 +77,7 @@ export class ChatInputComponent implements OnInit {
   addToModels() {
     this.chat.firstName=this.user.firstName;
     this.chat.lastName=this.user.lastName;
+    this.chat.displayName=this.user.displayName;
     this.chat.profilImg=this.user.photoURL;
     this.chat.message = this.newMessage;
     this.chat.weight = this.weight;

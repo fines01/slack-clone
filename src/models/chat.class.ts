@@ -7,6 +7,7 @@ export class Chat {
   italic: boolean;
   chatId: number;
   chatDate: any;
+  displayName:string;
 
   constructor(obj?: any) {
     this.firstName = obj ? obj.firstName : '';
@@ -17,6 +18,7 @@ export class Chat {
     this.italic = obj ? obj.italic : false;
     this.chatId = obj ? obj.chatId : 0;
     this.chatDate = obj ? obj.chatDate : '';
+    this.displayName = obj ? obj.displayName : '';
   }
 
   public toJSON() {
@@ -29,6 +31,7 @@ export class Chat {
       italic: this.italic,
       chatId: this.chatId,
       chatDate: this.chatDate,
+      displayName: this.displayName,
     };
   }
 }

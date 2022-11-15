@@ -12,7 +12,7 @@
 
         <div class="field-info">
             <div class="field-detail-user">
-                <h3> {{chat.firstName}} {{chat.lastName}}
+                <h3> {{chat.displayName}}
                 </h3>
                 <p>{{chat.chatDate | date : 'dd.MM.yyyy HH:mm' : 'de'}}</p>
                 <mat-icon (click)="openThread(chat.id)">chat</mat-icon>

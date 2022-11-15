@@ -3,11 +3,11 @@
         background-color: #1c1e20b9;
         border: 1px solid rgba(255, 255, 255, 0.2)
     }
-    
+
     mat-icon {
         color: white;
     }
-    
+
     .optionen {
         display: flex;
         justify-content: space-between;
@@ -24,7 +24,7 @@
             }
         }
     }
-    
+
     .left {
         display: flex;
         label {
@@ -34,19 +34,19 @@
             margin-right: 8px;
         }
     }
-    
+
     .right {
         display: flex;
     }
-    
+
     .fett {
         font-weight: 900;
     }
-    
+
     .kursive {
         font-style: italic;
     }
-    
+
     label {
         cursor: pointer;
         background-color: transparent;
@@ -58,9 +58,18 @@
             background-color: rgba(128, 128, 128, 0.128);
         }
     }
-    
+
     #upload-photo {
         opacity: 0;
         position: absolute;
         z-index: -1;
     }
+
+
+.emoji-container{
+  position: absolute;
+  top: -350px;
+  display: grid;
+  grid-template-columns: 100% 0%;
+  width: 36%;
+}
