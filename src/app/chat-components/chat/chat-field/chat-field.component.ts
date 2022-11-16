@@ -3,9 +3,6 @@ import { Chat } from 'src/models/chat.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, tap } from 'rxjs';
 
-
-
-
 @Component({
   selector: 'app-chat-field',
   templateUrl: './chat-field.component.html',

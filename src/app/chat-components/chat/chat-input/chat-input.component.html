@@ -37,7 +37,7 @@
 
 
     <div class="right">
-      <button type="submit" *ngIf="this.newMessage" (click)="sendMessage()">
+      <button type="submit" *ngIf="this.newMessage || this.progressInfo > 0" (click)="sendMessage()">
         <mat-icon>send</mat-icon>
       </button>
     </div>

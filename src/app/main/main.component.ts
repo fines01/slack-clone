@@ -10,7 +10,7 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  console.log(this.openThreadComponent)
+  // console.log(this.openThreadComponent)
   }
 
 }
