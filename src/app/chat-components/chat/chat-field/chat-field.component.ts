@@ -2,6 +2,8 @@ import { Component, OnInit, Output } from '@angular/core';
 import { Chat } from 'src/models/chat.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, tap } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogImgComponent } from '../dialog-img/dialog-img.component';
 
 @Component({
   selector: 'app-chat-field',
@@ -10,11 +12,10 @@ import { Observable, tap } from 'rxjs';
 })
 export class ChatFieldComponent implements OnInit {
   @Output() openThreadComponent: boolean = true;
-big:boolean=false;
+  big: boolean = false;
   chats$!: Observable<any[]>;
-;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog) { }
 
   getCollection(chat: string, orderByDoc?: string) {
     let queryFn!: any;
@@ -22,8 +23,8 @@ big:boolean=false;
 
     return this.firestore
       .collection(chat, queryFn)
-      .valueChanges({idField: 'id'}).pipe(tap()); //returns collection / Observable that can be subscribed inside the component
-    }
+      .valueChanges({ idField: 'id' }).pipe(tap()); //returns collection / Observable that can be subscribed inside the component
+  }
 
 
   ngOnInit(): void {
@@ -31,16 +32,19 @@ big:boolean=false;
       tap());
   }
 
-  openThread(id:any) {
+  openThread(id: any) {
     console.log('thread open from', id);
     //chat anhand der ID öffnen
     this.openThreadComponent = !this.openThreadComponent;
   }
 
-  open(i:any){
-    console.log('anzahl',i.lenght);
-this.big = !this.big
+
+  openDialog(chat: any) {
+    console.log(chat)
+    this.dialog.open(DialogImgComponent, {
+      data: chat
+    });
   }
-
-
 }
+
+

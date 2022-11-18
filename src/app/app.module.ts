@@ -33,8 +33,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { RemoveImgDialogComponent } from './remove-img-dialog/remove-img-dialog.component';
 import { AdjustStatusComponent } from './adjust-status/adjust-status.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ResetPasswordComponent } from './auth-components/reset-password/reset-password.component';
 import { InputComponent } from './thread/input/input.component';
@@ -42,6 +42,7 @@ import { FieldComponent } from './thread/field/field.component';
 import { ThreadContainerComponent } from './thread/thread-container/thread-container.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularImageViewerModule } from "@hreimer/angular-image-viewer";
+import { DialogImgComponent } from './chat-components/chat/dialog-img/dialog-img.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { AngularImageViewerModule } from "@hreimer/angular-image-viewer";
     InputComponent,
     FieldComponent,
     ThreadContainerComponent,
+    DialogImgComponent,
   ],
   imports: [
 
@@ -92,8 +94,8 @@ import { AngularImageViewerModule } from "@hreimer/angular-image-viewer";
     provideDatabase(() => getDatabase()),
   ],
   providers: [
-    ScreenTrackingService,UserTrackingService
+    ScreenTrackingService, UserTrackingService
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

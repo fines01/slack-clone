@@ -1,33 +1,29 @@
 <!-- {{chats$ | async | json}} -->
 
 
-<mat-card *ngFor="let chat of chats$ | async" >
-    <div  class="container-field">
+<mat-card *ngFor="let chat of chats$ | async">
+  <div class="container-field">
 
-        <div>
+    <div>
 
-            <img src="{{chat.profilImg}}">
-
-        </div>
-
-        <div class="field-info">
-            <div class="field-detail-user">
-                <h3> {{chat.displayName}}
-                </h3>
-                <p>{{chat.chatDate | date : 'dd.MM.yyyy HH:mm' : 'de'}}</p>
-                <mat-icon (click)="openThread(chat.id)">chat</mat-icon>
-            </div>
-            <p [class.fett]="chat.weight" [class.kursive]="chat.italic"> {{chat.message}} </p>
-            <div *ngIf="chat.messageImg !== ''">
-            <img class="messageImg" [class.big]="big" src="{{chat.messageImg}}" (click)="open(0)" >
-            </div>
-
-          </div>
+      <img src="{{chat.profilImg}}">
 
     </div>
 
-  </mat-card>
+    <div class="field-info">
+      <div class="field-detail-user">
+        <h3> {{chat.displayName}}
+        </h3>
+        <p>{{chat.chatDate | date : 'dd.MM.yyyy HH:mm' : 'de'}}</p>
+        <mat-icon (click)="openThread(chat.id)">chat</mat-icon>
+      </div>
+      <p [class.fett]="chat.weight" [class.kursive]="chat.italic"> {{chat.message}} </p>
+      <div *ngIf="chat.messageImg !== ''">
+        <img class="messageImg" [class.big]="big" src="{{chat.messageImg}}" (click)="openDialog(chat.messageImg)">
+      </div>
 
+    </div>
 
+  </div>
 
-
+</mat-card>
