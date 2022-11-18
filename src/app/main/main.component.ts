@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-main',
@@ -6,11 +8,21 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  @Input() openThreadComponent:boolean = false;
-  constructor() { }
+
+  openThreadComponent: boolean = false;
+  subscription!: Subscription;
+
+  constructor(private dataservice: DataService) { }
+
 
   ngOnInit(): void {
-  // console.log(this.openThreadComponent)
+    // console.log(this.openThreadComponent)
+    this.subscription = this.dataservice.threadVisible.subscribe(t => {
+      this.openThreadComponent = t;
+      console.log(t)
+    })
+
+    // console.log('te', this.openThreadComponent)
   }
 
 }

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  messages: string[] = [];
+  private nameSource = new BehaviorSubject<string>('');
+  name = this.nameSource.asObservable()
+
   constructor() { }
-
-
-  add(message: string) {
-    this.messages.push(message);
+  threadId(id: string) {
+    this.nameSource.next(id);
   }
 
 }

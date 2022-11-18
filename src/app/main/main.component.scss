@@ -5,8 +5,17 @@
 .thread-container {
   display: block;
   height: calc(100vh - 50px);
-  background-color: red;
+  background-color: #1a1d21;
   width: 30%;
   color: white;
   overflow-y: auto;
+}
+
+.user-container {
+  display: block;
+  height: calc(100vh - 50px);
+  background-color: #1a1d21;
+  width: 30%;
+  color: white;
+  overflow-y: scroll;
 }

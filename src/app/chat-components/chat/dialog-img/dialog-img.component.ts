@@ -16,7 +16,6 @@ export class DialogImgComponent implements OnInit {
 
   ngOnInit(): void {
     this.aktivImgUrl = this.data;
-    console.log(this.aktivImgUrl)
   }
 
 }
