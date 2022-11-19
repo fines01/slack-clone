@@ -16,7 +16,7 @@
         <div class="profil-section-content">
 
             <div class="profil-name">
-                <span class="profil-name-text">{{user.fullName}} </span>
+                <span class="profil-name-text">{{user.fullName ? user.fullName : user.displayName}} </span>
                 <button (click)="openEditUser()" class="profil-name-edit link-button" type="Button">Bearbeiten</button>
             </div>
 
