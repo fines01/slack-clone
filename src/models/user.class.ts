@@ -4,9 +4,13 @@ export class User {
     emailVerified: boolean = false;
     photoURL!: string;
     displayName!: string;
+    // TODO remove firstname, lastName ??
     firstName!: string;
     lastName!: string;
+    //
+    fullName!: string;
     namePronunciation!: string;
+    timeZone!: string;
     title!: string;
     phone!: string;
     status!: string;
@@ -22,8 +26,12 @@ export class User {
         this.emailVerified = (obj && obj.emailVerified) ? obj.emailVerified : false;
         this.photoURL = (obj && obj.photoURL) ? obj.photoURL : '../assets/img/avatar-placeholder.png';
         this.displayName = (obj && obj.displayName) ? obj.displayName : '';
+        // TODO remove firstName && lastName, instead ullName
         this.firstName = (obj && obj.firstName) ? obj.firstName : '';
         this.lastName = (obj && obj.lastName) ? obj.lastName : '';
+        //
+        this.fullName = (obj && obj.fullName) ? obj.fullName : '';
+        this.timeZone = (obj && obj.timeZone) ? obj.timeZone : '';
         this.namePronunciation = (obj && obj.namePronunciation) ? obj.namePronunciation : '+ Aussprache des Namens hinzufügen';
         this.title = (obj && obj.title) ? obj.title : '';
         this.phone = (obj && obj.phone) ? obj.phone : '+ Phone hinzufügen';
@@ -41,6 +49,8 @@ export class User {
             displayName: this.displayName,
             firstName: this.firstName,
             lastName: this.lastName,
+            fullName: this.fullName,
+            timeZone: this.timeZone,
             namePronunciation: this.namePronunciation,
             title: this.title,
             phone: this.phone,

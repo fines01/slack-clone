@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   date = new Date();
   user: User = new User();
-  authUserData!: any;
+  authUserData!: any; // user object from authentication database
   activeColor ="grey";
 
   userSubscription!: Subscription;
@@ -37,7 +37,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   openEditUser(){
-    this.dialog.open(EditUserDialogComponent);
+    let editDialog = this.dialog.open(EditUserDialogComponent);
+    editDialog.componentInstance.user = this.user;
+    editDialog.componentInstance.authUserData = this.authUserData; // gebraucht wenn eigenschaften geändert werden die auch in Auth DB stehen (uid, email, pw, displayName!, aber nicht photoURL da wir das photo nur in unserer user collection speichern (kann in auth db anscheinend nicht mehr gelöscht werden))
   }
 
   openAdjustStatus(){
