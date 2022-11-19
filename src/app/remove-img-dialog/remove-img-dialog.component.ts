@@ -16,5 +16,5 @@ export class RemoveImgDialogComponent implements OnInit {
   openEditUser(){
     this.dialog.open(EditUserDialogComponent);
     this.dialogRef.close(RemoveImgDialogComponent);
-   }
+  }
 }

@@ -64,8 +64,9 @@ export class ChatInputComponent implements OnInit {
   }
 
   addToModels() {
-    this.chat.firstName = this.user.firstName;
-    this.chat.lastName = this.user.lastName;
+    // this.chat.firstName = this.user.firstName;
+    // this.chat.lastName = this.user.lastName;
+    this.chat.fullName = this.user.fullName;
     this.chat.displayName = this.user.displayName;
     this.chat.profilImg = this.user.photoURL;
     this.chat.messageImg = this.urlImage;

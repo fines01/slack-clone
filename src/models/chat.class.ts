@@ -1,6 +1,9 @@
 export class Chat {
+  // User now has only fullName property instead of firstName && lastname
   firstName: string;
   lastName: string;
+  //
+  fullName: string;
   profilImg: string;
   message: string;
   messageImg: string;
@@ -13,6 +16,8 @@ export class Chat {
   constructor(obj?: any) {
     this.firstName = obj ? obj.firstName : '';
     this.lastName = obj ? obj.lastName : '';
+
+    this.fullName = obj ? obj.fullname : '';
     this.profilImg = obj ? obj.profilImg : '';
     this.message = obj ? obj.message : '';
     this.messageImg = obj ? obj.messageImg : '';
@@ -27,6 +32,8 @@ export class Chat {
     return {
       firstName: this.firstName,
       lastName: this.lastName,
+
+      fullName: this.fullName,
       profilImg: this.profilImg,
       message: this.message,
       messageImg: this.messageImg,
