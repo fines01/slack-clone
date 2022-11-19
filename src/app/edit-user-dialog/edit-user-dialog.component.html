@@ -1,87 +1,90 @@
 <div class="edit-user-dialog-div">
 
+  <form action="" #editForm="ngForm" autocomplete="on">
+
     <div class="header">Dein Profil bearbeiten</div>
 
     <div class="edit-container">
-        <div class="edit-text-div">
+      <div class="edit-text-div">
 
-            <mat-form-field class="mat-div" appearance="outline">
-                <mat-label>Vollständiger Name</mat-label>
-                <input matInput [(ngModel)]="user.fullName" [disabled]="loading">
-            </mat-form-field>
+        <mat-form-field class="mat-div" appearance="outline">
+          <mat-label>Vollständiger Name</mat-label>
+          <input matInput [(ngModel)]="user.fullName" [disabled]="loading" name="fullName">
+        </mat-form-field>
 
-            <mat-form-field class="mat-div" appearance="outline">
-                <mat-label>Anzeige Name</mat-label>
-                <input matInput [(ngModel)]="user.displayName" [disabled]="loading">
-                <mat-hint>Der Name, mit dem dich die anderen Benutzerinnen und Benutzer auf Slack-Clone ansprechen. Dies
-                    könnte z. B. dein Vorname oder dein Spitzname sein.</mat-hint>
-            </mat-form-field>
-
-
-            <div class="margin-30"></div>
+        <mat-form-field class="mat-div" appearance="outline">
+          <mat-label>Anzeige Name</mat-label>
+          <input matInput [(ngModel)]="user.displayName" [disabled]="loading" required name="displayName">
+          <mat-hint>Der Name, mit dem dich die anderen Benutzerinnen und Benutzer auf Slack-Clone ansprechen. Dies
+            könnte z. B. dein Vorname oder dein Spitzname sein.</mat-hint>
+          <mat-error>Bitte wähle einen Anzeigenamen</mat-error>
+        </mat-form-field>
 
 
-            <mat-form-field class="mat-div" appearance="outline">
-                <mat-label>Titel</mat-label>
-                <input matInput [(ngModel)]="user.title" [disabled]="loading">
-                <mat-hint>Teile anderen Leuten mit, was du in deinem Workspace machst</mat-hint>
-            </mat-form-field>
-
-            <div class="margin-30"></div>
-
-            <mat-form-field class="mat-div" appearance="outline">
-                <mat-label>Aussprache des Namens</mat-label>
-                <input matInput [(ngModel)]="user.namePronunciation" [disabled]="loading">
-                <mat-hint>Das kann eine phonetische Aussprache sein oder ein Beispiel dafür, wie dein Name klingt.
-                </mat-hint>
-            </mat-form-field>
+        <div class="margin-30"></div>
 
 
-            <div class="margin-30"></div>
+        <mat-form-field class="mat-div" appearance="outline">
+          <mat-label>Titel</mat-label>
+          <input matInput [(ngModel)]="user.title" [disabled]="loading" name="title">
+          <mat-hint>Teile anderen Leuten mit, was du in deinem Workspace machst</mat-hint>
+        </mat-form-field>
 
-            <mat-form-field class="mat-div" appearance="fill">
-                <mat-label>Zeitzone</mat-label>
-                <mat-select [(ngModel)]="user.timeZone" [disabled]="loading">
-                    <mat-option *ngFor="let food of foods" [value]="food.value">
-                        {{food.viewValue}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+        <div class="margin-30"></div>
+
+        <mat-form-field class="mat-div" appearance="outline">
+          <mat-label>Aussprache des Namens</mat-label>
+          <input matInput [(ngModel)]="user.namePronunciation" [disabled]="loading" name="namePronunciation">
+          <mat-hint>Das kann eine phonetische Aussprache sein oder ein Beispiel dafür, wie dein Name klingt.
+          </mat-hint>
+        </mat-form-field>
+
+
+        <div class="margin-30"></div>
+
+        <mat-form-field class="mat-div" appearance="fill">
+          <mat-label>Zeitzone</mat-label>
+          <mat-select [(ngModel)]="user.timeZone" [disabled]="loading" name="timeZone">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="edit-img-div">
+        <div class="profil-img-container">
+          <div class="profil-img">
+            <img class="avatar-img" src="assets/img/avatar-placeholder.png">
+          </div>
         </div>
 
-        <div class="edit-img-div">
-            <div class="profil-img-container">
-                <div class="profil-img">
-                    <img class="avatar-img" src="assets/img/avatar-placeholder.png">
-                </div>
-            </div>
-
-            <div class="img-btn-div">
-                <button class="btn" mat-raised-button color="primary">
-                    <label style="display:block;">Foto hochladen
-                        <input style="display:hide" type="file"
-                        (change)="fileSelected($event)">
-                    </label></button>
-                <button (click)="openImgRemoveDialog()" class="btn" mat-raised-button color="basic">Foto
-                    entfernen</button>
-            </div>
-
-
+        <div class="img-btn-div">
+          <button class="btn" mat-raised-button color="primary">
+            <label style="display:block;">Foto hochladen
+              <input style="display:hide" type="file" (change)="fileSelected($event)">
+            </label></button>
+          <button (click)="openImgRemoveDialog()" class="btn" mat-raised-button color="basic">Foto
+            entfernen</button>
         </div>
+
+
+      </div>
 
 
     </div>
 
     <div class="footer">
 
-        <div class="footer-btn-div">
-            <button (click)="closeDialog()" class="btn" mat-raised-button>Abbrechen</button>
-            <button class="btn" mat-raised-button color="primary" (click)="saveEdit()">Änderung speichern</button>
-        </div>
+      <div class="footer-btn-div">
+        <button (click)="closeDialog()" class="btn" mat-raised-button>Abbrechen</button>
+        <button class="btn" mat-raised-button color="primary" (click)="editForm.valid && saveEdit()">Änderung
+          speichern</button>
+      </div>
 
 
     </div>
 
-
+  </form>
 
 </div>
