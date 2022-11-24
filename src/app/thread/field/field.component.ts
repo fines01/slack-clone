@@ -13,14 +13,14 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class FieldComponent implements OnInit {
   chats$!: Observable<any[]>;
+  test: any;
 
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService) { }
 
   ngOnInit(): void {
     this.chats$ = this.getCollection("chat", "chatDate").pipe(
-      tap(data => console.log(data)))
-      console.log(this.chats$.pipe(data => data))
-
+      tap(data => console.log('darta',data)))
+      console.log(this.test)
   }
 
   getCollection(chat: string, orderByDoc?: string) {
@@ -34,3 +34,5 @@ export class FieldComponent implements OnInit {
 
 
 }
+
+

@@ -1,0 +1,6 @@
+<!-- {{chats$ | async | json}} -->
+<mat-card *ngFor="let chat of chats$ | async">
+
+  {{chat.message}}
+
+</mat-card>
