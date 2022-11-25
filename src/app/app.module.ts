@@ -36,12 +36,12 @@ import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingServ
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ResetPasswordComponent } from './auth-components/reset-password/reset-password.component';
-import { FieldComponent } from './thread/field/field.component';
-import { ThreadContainerComponent } from './thread/thread-container/thread-container.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularImageViewerModule } from "@hreimer/angular-image-viewer";
 import { DialogImgComponent } from './chat-components/chat/dialog-img/dialog-img.component';
 import { InputComponent } from './shared/input/input.component';
+import { FieldComponent } from './chat-components/thread/field/field.component';
+import { ThreadContainerComponent } from './chat-components/thread/thread-container/thread-container.component';
 
 
 @NgModule({
