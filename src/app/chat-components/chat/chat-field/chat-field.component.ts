@@ -18,10 +18,13 @@ export class ChatFieldComponent implements OnInit {
   // chats$!: Observable<any[]>;
   openThreadComponent: boolean = false
   @Input() chats$!: Observable<any[]>;
+  @Input() thread: boolean = false
 
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService, private fireService: FirestoreService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('tt', this.thread)
+  }
 
   openDialog(imgUrl: string) {
     this.dialog.open(DialogImgComponent, {

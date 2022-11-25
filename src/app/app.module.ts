@@ -40,7 +40,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularImageViewerModule } from "@hreimer/angular-image-viewer";
 import { DialogImgComponent } from './chat-components/chat/dialog-img/dialog-img.component';
 import { InputComponent } from './shared/input/input.component';
-import { FieldComponent } from './chat-components/thread/field/field.component';
 import { ThreadContainerComponent } from './chat-components/thread/thread-container/thread-container.component';
 
 
@@ -59,7 +58,6 @@ import { ThreadContainerComponent } from './chat-components/thread/thread-contai
     RemoveImgDialogComponent,
     AdjustStatusComponent,
     ResetPasswordComponent,
-    FieldComponent,
     ThreadContainerComponent,
     DialogImgComponent,
     InputComponent

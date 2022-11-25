@@ -7,12 +7,12 @@
 <div class="chat-container">
 
   <div class="chat-field-container">
-    <app-field></app-field>
+    <!-- <app-chat-field [chats$]="chats"></app-chat-field> -->
+    <app-chat-field [chats$]="answers$" [thread]="false"></app-chat-field>
   </div>
 
   <div class="btm-chat-input">
     <app-input [collection]="collection" [id]="id"></app-input>
-<!-- <app-input></app-input> -->
   </div>
 
 </div>
