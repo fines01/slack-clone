@@ -15,6 +15,7 @@
         </h3>
         <p>{{chat.chatDate | date : 'dd.MM.yyyy HH:mm' : 'de'}}</p>
         <mat-icon (click)="openThread(chat.id)">chat</mat-icon>
+        <p>Anzahl Chats 1</p>
       </div>
       <p [class.fett]="chat.weight" [class.kursive]="chat.italic"> {{chat.message}} </p>
       <div *ngIf="chat.messageImg !== ''">

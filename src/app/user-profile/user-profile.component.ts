@@ -77,8 +77,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.userSubscription = this.fireService.getDocByID(this.authUserData.uid, 'users')
       .subscribe( (user:any)=>{
         this.user = new User(user);
-        // console.log('current user: ', this.user);
-
         if (this.authUserData.isAnonymous && user.displayName == '') {
           this.user.displayName = 'Guest';
         }

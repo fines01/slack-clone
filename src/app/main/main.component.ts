@@ -16,13 +16,11 @@ export class MainComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // console.log(this.openThreadComponent)
+
     this.subscription = this.dataservice.threadVisible.subscribe(t => {
       this.openThreadComponent = t;
-      console.log(t)
     })
 
-    // console.log('te', this.openThreadComponent)
   }
 
 }

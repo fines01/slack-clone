@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { collection, collectionData } from '@angular/fire/firestore';
+import { AngularFirestore,} from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, tap, map, filter } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { DialogImgComponent } from 'src/app/chat-components/chat/dialog-img/dialog-img.component';
 import { ChatService } from 'src/app/services/chat.service';
-import { DataService } from 'src/app/services/data.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -23,13 +22,16 @@ export class FieldComponent implements OnInit {
   ngOnInit(): void {
     this.chatservices.name.subscribe(id => this.id = id);
 
-    this.answers$ = this.fireService.getCollection('threads').pipe(
+    this.answers$ = this.fireService.getCollection('threads', 'chatDate').pipe(
       map(chat => chat.filter((chat : any) => chat.chatId == this.id)),
     )
 
     this.chats$ = this.fireService.getDocByID(this.id, "chat");
   }
 
+  openDialog(imgUrl: string) {
+    this.dialog.open(DialogImgComponent, {
+      data: imgUrl
+    });
+  }
 }
-
-

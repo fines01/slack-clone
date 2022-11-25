@@ -14,12 +14,13 @@ h1 {
 
 .btm-chat-input {
   margin-left: 2.5%;
-position: relative;
+position: fixed;
   bottom: 25px;
+  width: 25%;
 }
 .chat-container{
   overflow-y: auto;
-  height: 78%;
+  height: 76%;
 }
 
 .chat-field-container {

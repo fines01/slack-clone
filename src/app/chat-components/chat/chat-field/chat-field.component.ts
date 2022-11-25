@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,7 +22,7 @@ export class ChatFieldComponent implements OnInit {
   ngOnInit(): void {
     this.chats$ = this.fireService.getCollection("chat", "chatDate")
       .pipe(
-        tap(data => console.log(data))
+        tap()
       );
   }
 
@@ -33,7 +33,6 @@ export class ChatFieldComponent implements OnInit {
   }
 
   openThread(id: string) {
-    // console.log('thread open from', id);
     this.openThreadComponent = !this.openThreadComponent;
     this.chatservices.threadId(id);
     this.dataservice.visibleThread(this.openThreadComponent);

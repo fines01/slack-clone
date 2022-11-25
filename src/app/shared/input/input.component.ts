@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Chat } from 'src/models/chat.class';
-import { Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { User } from 'src/models/user.class';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -34,8 +34,6 @@ export class InputComponent implements OnInit {
     //   tap(data => console.log(data?.displayName))
     // ).subscribe()
     this.subscribeAuthState();
-    console.log(this.collection)
-    console.log(this.id)
   }
 
   editWeight() {
@@ -99,12 +97,10 @@ export class InputComponent implements OnInit {
       });
   }
 
-
   //Upload Image mit Firebase Storage
   progressInfo: number = 0;
   urlImage: string = '';
   chooseFile(event: any) {
-    console.log(event.target)
     this.file = event.target.files[0];
     this.addData();
   }
