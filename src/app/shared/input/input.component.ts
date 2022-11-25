@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { User } from 'src/models/user.class';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
+import { getStorage, Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-input',
@@ -28,12 +28,14 @@ export class InputComponent implements OnInit {
   public file: any = {};
   userSubscription!: Subscription;
   authStateSubscription!: Subscription;
+  path:string='';
 
   ngOnInit(): void {
     // this.authService.getAuthState().pipe(
     //   tap(data => console.log(data?.displayName))
     // ).subscribe()
     this.subscribeAuthState();
+    console.log('rr',this.file);
   }
 
   editWeight() {
@@ -108,8 +110,14 @@ export class InputComponent implements OnInit {
     contentType: 'image/jpeg'
   }
 
+
+
   addData() {
-    const storageRef = ref(this.storage, this.file.name);
+      const storageRef = ref(this.storage, this.file.name);
+    //in ordner chat-images speichern
+    this.path =  storageRef.bucket
+    console.log(this.path)
+
     const uploadTask = uploadBytesResumable(storageRef, this.file, this.metadata);
     uploadTask.on('state_changed',
       (snapshot) => {
