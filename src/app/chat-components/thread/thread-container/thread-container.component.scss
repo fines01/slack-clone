@@ -1,30 +1,25 @@
-
 h1 {
-    margin-left: 2.5%;
-    margin-top: 8px;
-    color: white;
-}
-
-.thread-top-name {
-  display: flex;
-  align-items: center;
-  height: 61px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.btm-chat-input {
   margin-left: 2.5%;
-position: fixed;
-  bottom: 25px;
-  width: 25%;
-}
-.chat-container{
-  overflow-y: auto;
-  height: 76%;
+  margin-top: 8px;
+  color: white;
 }
 
 .chat-field-container {
-  margin-top: 8px;
-  width: 95%;
-  margin-left: 2.5%;
+overflow-y: scroll;
 }
+
+.chat-container{
+display: flex;
+flex-direction: column;
+flex: 0 1 auto;
+overflow: hidden;
+position: relative;
+}
+
+.chat-top-name {
+display: flex;
+align-items: center;
+border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+flex: 0 0 61px;
+}
+

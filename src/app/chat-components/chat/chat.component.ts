@@ -20,10 +20,7 @@ collection: string = 'chat';
 constructor(public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService, private fireService: FirestoreService) { }
 
 ngOnInit(): void {
-  this.chats$ = this.fireService.getCollection("chat", "chatDate")
-    .pipe(
-      tap()
-    );
+  this.chats$ = this.fireService.getCollection("chat", "chatDate");
 }
 
 openDialog(imgUrl: string) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,18 +13,15 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   templateUrl: './chat-field.component.html',
   styleUrls: ['./chat-field.component.scss'],
 })
+
 export class ChatFieldComponent implements OnInit {
-  chats$!: Observable<any[]>;
+  // chats$!: Observable<any[]>;
   openThreadComponent: boolean = false
+  @Input() chats$!: Observable<any[]>;
 
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService, private fireService: FirestoreService) { }
 
-  ngOnInit(): void {
-    this.chats$ = this.fireService.getCollection("chat", "chatDate")
-      .pipe(
-        tap()
-      );
-  }
+  ngOnInit(): void {}
 
   openDialog(imgUrl: string) {
     this.dialog.open(DialogImgComponent, {

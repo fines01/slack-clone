@@ -5,12 +5,10 @@
 <div class="chat-container">
 
     <div class="chat-field-container">
-        <app-chat-field></app-chat-field>
+      <app-chat-field [chats$]="chats$" ></app-chat-field>
     </div>
-
 
     <div class="btm-chat-input">
-        <app-input [collection]="collection"></app-input>
+      <app-input [collection]="collection"></app-input>
     </div>
 </div>
-
