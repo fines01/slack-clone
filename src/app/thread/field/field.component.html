@@ -1,6 +1,11 @@
 <!-- {{chats$ | async | json}} -->
-<mat-card *ngFor="let chat of chats$ | async">
+<ng-container *ngIf="chats$ | async as chat">
+  <mat-card>
+    {{chat.message}}
+    {{chat.messageImg}}
+  </mat-card>
+</ng-container>
 
-  {{chat.message}}
-
+<mat-card *ngFor="let answer of answers$ | async">
+  {{answer.message}}
 </mat-card>

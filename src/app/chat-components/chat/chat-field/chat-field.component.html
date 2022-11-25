@@ -1,6 +1,5 @@
 <!-- {{chats$ | async | json}} -->
 
-
 <mat-card *ngFor="let chat of chats$ | async">
   <div class="container-field">
 
@@ -19,7 +18,7 @@
       </div>
       <p [class.fett]="chat.weight" [class.kursive]="chat.italic"> {{chat.message}} </p>
       <div *ngIf="chat.messageImg !== ''">
-        <img class="messageImg" [class.big]="big" src="{{chat.messageImg}}" (click)="openDialog(chat.messageImg)">
+        <img class="messageImg" src="{{chat.messageImg}}" (click)="openDialog(chat.messageImg)">
       </div>
 
     </div>

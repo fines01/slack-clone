@@ -19,7 +19,6 @@ import { ChatComponent } from './chat-components/chat/chat.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { ChatFieldComponent } from './chat-components/chat/chat-field/chat-field.component';
-import { ChatInputComponent } from './chat-components/chat/chat-input/chat-input.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -37,12 +36,12 @@ import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingServ
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ResetPasswordComponent } from './auth-components/reset-password/reset-password.component';
-import { InputComponent } from './thread/input/input.component';
 import { FieldComponent } from './thread/field/field.component';
 import { ThreadContainerComponent } from './thread/thread-container/thread-container.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularImageViewerModule } from "@hreimer/angular-image-viewer";
 import { DialogImgComponent } from './chat-components/chat/dialog-img/dialog-img.component';
+import { InputComponent } from './shared/input/input.component';
 
 
 @NgModule({
@@ -56,15 +55,14 @@ import { DialogImgComponent } from './chat-components/chat/dialog-img/dialog-img
     UserProfileComponent,
     ChatComponent,
     ChatFieldComponent,
-    ChatInputComponent,
     EditUserDialogComponent,
     RemoveImgDialogComponent,
     AdjustStatusComponent,
     ResetPasswordComponent,
-    InputComponent,
     FieldComponent,
     ThreadContainerComponent,
     DialogImgComponent,
+    InputComponent
   ],
   imports: [
 

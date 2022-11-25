@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogImgComponent } from '../dialog-img/dialog-img.component';
 import { ChatService } from 'src/app/services/chat.service';
 import { DataService } from 'src/app/services/data.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 
 @Component({
@@ -13,25 +14,16 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./chat-field.component.scss'],
 })
 export class ChatFieldComponent implements OnInit {
-  big: boolean = false;
   chats$!: Observable<any[]>;
   openThreadComponent: boolean = false
 
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService) { }
-
-  getCollection(chat: string, orderByDoc?: string) {
-    let queryFn!: any;
-    orderByDoc ? queryFn = (ref: any) => ref.orderBy(orderByDoc, 'asc') : queryFn = undefined;
-
-    return this.firestore
-      .collection(chat, queryFn)
-      .valueChanges({ idField: 'id' }).pipe(tap()); //returns collection / Observable that can be subscribed inside the component
-  }
-
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService, private fireService: FirestoreService) { }
 
   ngOnInit(): void {
-    this.chats$ = this.getCollection("chat", "chatDate").pipe(
-      tap());
+    this.chats$ = this.fireService.getCollection("chat", "chatDate")
+      .pipe(
+        tap(data => console.log(data))
+      );
   }
 
   openDialog(imgUrl: string) {

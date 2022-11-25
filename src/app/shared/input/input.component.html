@@ -9,9 +9,9 @@
 
   <div class="optionen">
     <div class="left">
-      <label for="upload-photo">
+      <label>
         <mat-icon> insert_photo</mat-icon>
-      <input type="file" name="upload-photo" id="upload-photo"  (change)="chooseFile($event)"/>
+        <input type="file" name="upload-photo" class="upload-photo" (change)="chooseFile($event)"/>
     </label>
 
 
@@ -43,3 +43,4 @@
     </div>
   </div>
 </mat-card>
+

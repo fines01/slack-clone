@@ -43,7 +43,7 @@ export class FirestoreService {
      * @param {string} collectionName
      * @returns {Observable} - firestore collection document
      */
-  getDocByID(id: string, collectionName: string) {
+  getDocByID(id: any, collectionName: string) {
     return this.firestore
       .collection(collectionName)
       .doc(id)
