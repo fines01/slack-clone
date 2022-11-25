@@ -1,46 +1,56 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './auth-components/login/login.component';
-import { RegisterComponent } from './auth-components/register/register.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { provideStorage, getStorage } from '@angular/fire/storage';
-import { MainComponent } from './main/main.component';
-import { ChannelsMenuComponent } from './channels-menu/channels-menu.component';
-import { HeaderToolbarComponent } from './header-toolbar/header-toolbar.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { ChatComponent } from './chat-components/chat/chat.component';
+
+
+//Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { ChatFieldComponent } from './chat-components/chat/chat-field/chat-field.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import { RemoveImgDialogComponent } from './remove-img-dialog/remove-img-dialog.component';
-import { AdjustStatusComponent } from './adjust-status/adjust-status.component';
+
+
+//Spezial
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
-import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { AngularImageViewerModule } from "@hreimer/angular-image-viewer";
+
+
+//Firebase
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire/compat';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+
+//Component
+import { AppComponent } from './app.component';
+import { LoginComponent } from './auth-components/login/login.component';
+import { RegisterComponent } from './auth-components/register/register.component';
+import { MainComponent } from './main/main.component';
+import { ChannelsMenuComponent } from './channels-menu/channels-menu.component';
+import { HeaderToolbarComponent } from './header-toolbar/header-toolbar.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ChatComponent } from './chat-components/chat/chat.component';
+import { ChatFieldComponent } from './shared/chat-field/chat-field.component';
+import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
+import { RemoveImgDialogComponent } from './remove-img-dialog/remove-img-dialog.component';
+import { AdjustStatusComponent } from './adjust-status/adjust-status.component';
 import { ResetPasswordComponent } from './auth-components/reset-password/reset-password.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AngularImageViewerModule } from "@hreimer/angular-image-viewer";
-import { DialogImgComponent } from './chat-components/chat/dialog-img/dialog-img.component';
 import { InputComponent } from './shared/input/input.component';
-import { ThreadContainerComponent } from './chat-components/thread/thread-container/thread-container.component';
+import { ThreadContainerComponent } from './chat-components/thread/t/thread.component';
+import { DialogImgComponent } from './shared/dialog-img/dialog-img.component';
 
 
 @NgModule({
@@ -94,4 +104,5 @@ import { ThreadContainerComponent } from './chat-components/thread/thread-contai
   ],
   bootstrap: [AppComponent],
 })
+
 export class AppModule { }

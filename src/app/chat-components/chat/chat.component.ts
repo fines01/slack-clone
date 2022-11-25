@@ -4,7 +4,8 @@ import { Observable, tap } from 'rxjs';
 import { ChatService } from 'src/app/services/chat.service';
 import { DataService } from 'src/app/services/data.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { DialogImgComponent } from './dialog-img/dialog-img.component';
+import { DialogImgComponent } from 'src/app/shared/dialog-img/dialog-img.component';
+
 
 @Component({
   selector: 'app-chat',

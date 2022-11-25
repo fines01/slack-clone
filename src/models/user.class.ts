@@ -1,3 +1,5 @@
+import { user } from "@angular/fire/auth";
+
 export class User {
     uid!: string;
     email!: string;
@@ -59,3 +61,5 @@ export class User {
         }
     }
 }
+
+

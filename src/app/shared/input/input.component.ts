@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Chat } from 'src/models/chat.class';
+
 import { Subscription } from 'rxjs';
 import { User } from 'src/models/user.class';
 import { AuthService } from 'src/app/services/auth.service';
@@ -19,7 +19,7 @@ export class InputComponent implements OnInit {
   @Input() id: string = "";
 
   newMessage: string = '';
-  chat = new Chat();
+
   weight: boolean = false;
   italic: boolean = false;
   chatDate = new Date().toLocaleDateString('de-de');

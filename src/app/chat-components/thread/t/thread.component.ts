@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { map, Observable, toArray } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ChatService } from 'src/app/services/chat.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
-  selector: 'app-thread-container',
-  templateUrl: './thread-container.component.html',
-  styleUrls: ['./thread-container.component.scss']
+  selector: 'app-thread',
+  templateUrl: './thread.component.html',
+  styleUrls: ['./thread.component.scss']
 })
 export class ThreadContainerComponent implements OnInit {
   chats$!: Observable<any>;
