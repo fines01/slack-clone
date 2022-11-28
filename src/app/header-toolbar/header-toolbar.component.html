@@ -17,7 +17,10 @@
 
     <div class="center">
         <mat-icon class="nav-icon">help_outline</mat-icon>
-        <mat-icon class="nav-icon">person</mat-icon>
+        <mat-icon class="nav-icon" [matMenuTriggerFor]="userMenu">person</mat-icon>
+        <mat-menu #userMenu>
+            <button mat-menu-item (click)="logOutUser()">Logout</button>
+        </mat-menu>
         <button class="nav-btn">
             <mat-icon>minimize</mat-icon>
         </button>
