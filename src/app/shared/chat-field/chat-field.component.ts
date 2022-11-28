@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogImgComponent } from '../dialog-img/dialog-img.component';
 import { ChatService } from 'src/app/services/chat.service';
@@ -19,11 +19,15 @@ export class ChatFieldComponent implements OnInit {
   openThreadComponent: boolean = false
   @Input() chats$!: Observable<any[]>;
   @Input() thread: boolean = false
+  chat: any;
 
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService, private fireService: FirestoreService) { }
 
   ngOnInit(): void {
-    console.log('tt', this.thread)
+    this.chats$.pipe(map(data => console.log(data))).subscribe()
+
+    this.chats$.pipe(map(data => this.chat = data)).subscribe()
+    console.log(this.chat)
   }
 
   openDialog(imgUrl: string) {

@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { User } from 'src/models/user.class';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { getStorage, Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
+import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 
 
 @Component({
@@ -35,7 +35,6 @@ export class InputComponent implements OnInit {
     //   tap(data => console.log(data?.displayName))
     // ).subscribe()
     this.subscribeAuthState();
-    console.log('rr',this.file);
   }
 
   editWeight() {
