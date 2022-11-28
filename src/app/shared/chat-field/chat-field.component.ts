@@ -24,13 +24,6 @@ export class ChatFieldComponent implements OnInit {
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService, private fireService: FirestoreService) { }
 
   ngOnInit(): void {
-    // this.chats$.pipe(
-    //   map(data => Object.keys(data).map((k: any) => data[k]))
-    // )
-  //   this.chats$.pipe(map(data => console.log(data))).subscribe()
-
-  // this.chat = this.chats$.pipe(map(data => data)).subscribe()
-  //   console.log(this.chat)
   }
 
   openDialog(imgUrl: string) {

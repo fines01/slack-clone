@@ -1,3 +1,10 @@
+:host {
+  display: flex;
+  height: calc(100vh - 50px);
+  background-color: #1A1D21;
+  flex-direction: column;
+}
+
 h1 {
   margin-left: 2.5%;
   margin-top: 8px;
