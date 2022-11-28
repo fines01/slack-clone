@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { getStorage, Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 
+
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
@@ -19,7 +20,6 @@ export class InputComponent implements OnInit {
   @Input() id: string = "";
 
   newMessage: string = '';
-
   weight: boolean = false;
   italic: boolean = false;
   chatDate = new Date().toLocaleDateString('de-de');
@@ -117,7 +117,6 @@ export class InputComponent implements OnInit {
     //in ordner chat-images speichern
     this.path =  storageRef.bucket
     console.log(this.path)
-
     const uploadTask = uploadBytesResumable(storageRef, this.file, this.metadata);
     uploadTask.on('state_changed',
       (snapshot) => {
