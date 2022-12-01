@@ -15,6 +15,7 @@ export class ThreadContainerComponent implements OnInit {
   answers$!: Observable<any>;
   chats : any = [];
   id: any;
+  threadLength: any;
 
   collection: string = 'threads';
 
@@ -24,10 +25,8 @@ export class ThreadContainerComponent implements OnInit {
     this.chatservices.name.subscribe(id => this.id = id);
 
     this.answers$ = this.fireService.getCollection('threads', 'chatDate').pipe(
-      map(chat => chat.filter((chat : any) => chat.chatId == this.id)),
-    )
+      map(chat => chat.filter((chat : any) => chat.chatId == this.id)))
 
-    // this.answers$ = this.fireService.getDocsByValue('chatId', this.id, 'threads')
 
     this.chats$ = this.fireService.getDocByID(this.id, "chat").pipe(
       map(data => {
