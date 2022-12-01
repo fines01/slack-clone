@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
+import { EditUserDialogComponent } from '../user-components/edit-user-dialog/edit-user-dialog.component';
 
 @Component({
   selector: 'app-remove-img-dialog',

@@ -41,17 +41,17 @@ import { RegisterComponent } from './auth-components/register/register.component
 import { MainComponent } from './main/main.component';
 import { ChannelsMenuComponent } from './channels-menu/channels-menu.component';
 import { HeaderToolbarComponent } from './header-toolbar/header-toolbar.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileComponent } from './user-components/user-profile/user-profile.component';
 import { ChatComponent } from './chat-components/chat/chat.component';
 import { ChatFieldComponent } from './shared/chat-field/chat-field.component';
-import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
+import { EditUserDialogComponent } from './user-components/edit-user-dialog/edit-user-dialog.component';
 import { RemoveImgDialogComponent } from './remove-img-dialog/remove-img-dialog.component';
 import { AdjustStatusComponent } from './adjust-status/adjust-status.component';
 import { ResetPasswordComponent } from './auth-components/reset-password/reset-password.component';
 import { InputComponent } from './shared/input/input.component';
 import { ThreadContainerComponent } from './chat-components/thread/t/thread.component';
 import { DialogImgComponent } from './shared/dialog-img/dialog-img.component';
-import { EditUserContactDialogComponent } from './edit-user-contact-dialog/edit-user-contact-dialog.component';
+import { EditUserContactDialogComponent } from './user-components/edit-user-contact-dialog/edit-user-contact-dialog.component';
 
 
 @NgModule({

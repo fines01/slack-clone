@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { AdjustStatusComponent } from '../adjust-status/adjust-status.component';
+import { AdjustStatusComponent } from '../../adjust-status/adjust-status.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.class';
-import { AuthService } from '../services/auth.service';
-import { FirestoreService } from '../services/firestore.service';
+import { AuthService } from '../../services/auth.service';
+import { FirestoreService } from '../../services/firestore.service';
 import { Subscription } from 'rxjs';
 import { EditUserContactDialogComponent } from '../edit-user-contact-dialog/edit-user-contact-dialog.component';
 

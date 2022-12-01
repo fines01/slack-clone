@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { RemoveImgDialogComponent } from '../remove-img-dialog/remove-img-dialog.component';
+import { RemoveImgDialogComponent } from '../../remove-img-dialog/remove-img-dialog.component';
 import { Storage } from '@angular/fire/storage';
 import { SelectControlValueAccessor } from '@angular/forms';
 import { User } from 'src/models/user.class';
-import { AuthService } from '../services/auth.service';
-import { FirestoreService } from '../services/firestore.service';
+import { AuthService } from '../../services/auth.service';
+import { FirestoreService } from '../../services/firestore.service';
 
 
 
