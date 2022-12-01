@@ -51,6 +51,7 @@ import { ResetPasswordComponent } from './auth-components/reset-password/reset-p
 import { InputComponent } from './shared/input/input.component';
 import { ThreadContainerComponent } from './chat-components/thread/t/thread.component';
 import { DialogImgComponent } from './shared/dialog-img/dialog-img.component';
+import { EditUserContactDialogComponent } from './edit-user-contact-dialog/edit-user-contact-dialog.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { DialogImgComponent } from './shared/dialog-img/dialog-img.component';
     ResetPasswordComponent,
     ThreadContainerComponent,
     DialogImgComponent,
-    InputComponent
+    InputComponent,
+    EditUserContactDialogComponent
   ],
   imports: [
 

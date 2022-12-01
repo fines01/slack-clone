@@ -43,8 +43,8 @@ export class EditUserDialogComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log(this.user);
-    console.log('is guest-user:', this.authUserData.isAnonymous)
+    // console.log(this.user);
+    // console.log('is guest-user:', this.authUserData.isAnonymous)
   }
 
   openImgRemoveDialog() {

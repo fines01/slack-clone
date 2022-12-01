@@ -16,7 +16,7 @@
         <div class="profil-section-content">
 
             <div class="profil-name">
-                <span class="profil-name-text">{{user.fullName ? user.fullName : user.displayName}} </span>
+                <span class="profil-name-text">{{user.displayName ? user.displayName : user.fullName}} </span>
                 <button (click)="openEditUser()" class="profil-name-edit link-button" type="Button">Bearbeiten</button>
             </div>
 
@@ -59,7 +59,7 @@
     <div class="profil-section">
         <div class="contact-info-div">
             <div>Kontaktdaten</div>
-            <div class="link-button">Edit</div>
+            <div class="link-button" (click)="openEditContactDetails()">Edit</div>
         </div>
 
         <div class="e-mail-div">

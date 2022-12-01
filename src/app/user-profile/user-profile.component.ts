@@ -8,6 +8,7 @@ import { User } from 'src/models/user.class';
 import { AuthService } from '../services/auth.service';
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
+import { EditUserContactDialogComponent } from '../edit-user-contact-dialog/edit-user-contact-dialog.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -40,6 +41,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     let editDialog = this.dialog.open(EditUserDialogComponent);
     editDialog.componentInstance.user = this.user;
     editDialog.componentInstance.authUserData = this.authUserData; // gebraucht wenn eigenschaften geändert werden die auch in Auth DB stehen (uid, email, pw, displayName!, aber nicht photoURL da wir das photo nur in unserer user collection speichern (kann in auth db anscheinend nicht mehr gelöscht werden))
+  }
+
+  openEditContactDetails() {
+    let editDialog = this.dialog.open(EditUserContactDialogComponent);
+    editDialog.componentInstance.user = this.user;
+    editDialog.componentInstance.authUserdata = this.authUserData;
   }
 
   openAdjustStatus(){
