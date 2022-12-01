@@ -1,5 +1,6 @@
 .main-content {
   display: flex;
+  overflow: hidden;
 }
 
 .thread-container {
@@ -17,4 +18,5 @@
   background-color: #1a1d21;
   width: 30%;
   color: white;
+  overflow: hidden;
 }
