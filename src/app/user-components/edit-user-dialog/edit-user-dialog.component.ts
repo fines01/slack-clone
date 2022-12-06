@@ -33,6 +33,9 @@ export class EditUserDialogComponent implements OnInit {
   selectedFile = null;
   storage = getStorage();
   storageRef = ref(this.storage, '/user-images');
+  spaceRef = ref(this.storageRef, 'profil');
+ 
+  
 
   foods: any;
   constructor(
@@ -55,9 +58,11 @@ export class EditUserDialogComponent implements OnInit {
   fileSelected(file: any) {
     file = file.target.files[0];
     console.log(this.selectedFile);
+    
 
-    uploadBytes(this.storageRef, file).then((snapshot) => {
+    uploadBytes(this.spaceRef, file).then((snapshot) => {
       console.log('Uploaded', file.name);
+      console.log('snapshot', this.storageRef)
     });
 
   }
