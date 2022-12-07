@@ -22,6 +22,7 @@ export class ChatFieldComponent implements OnInit {
   chat: any;
   test: any;
 
+
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService, private fireService: FirestoreService) { }
 
   ngOnInit(): void {
@@ -33,19 +34,22 @@ export class ChatFieldComponent implements OnInit {
     // doku: https://firebase.google.com/docs/firestore/query-data/queries?authuser=0&hl=de
     // firebase abfragen mit chatid
 
-    this.chats$.pipe(
+    this.test = this.chats$.pipe(
       tap(chats => {
         chats.forEach(chat => {
           console.log(chat)
           this.fireService.getDocsByValue("chatId", chat.id, "threads").pipe(
-            tap(data => console.log(data.length))
+            tap(data => {
+              console.log(data.length)
+              return data.length
+            })
+
           ).subscribe();
         })
       })
-      ).subscribe() ;
+    ).subscribe();
 
-      console.log(this.test)
-
+    console.log(this.test)
   }
 
 
