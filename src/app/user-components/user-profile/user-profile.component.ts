@@ -85,11 +85,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   subscribeCurrentUser(){
     this.userSubscription = this.fireService.getDocByID(this.authUserData.uid, 'users')
       .subscribe( (user:any)=>{
-        this.user = new User(user);
-        if (this.authUserData.isAnonymous && user.displayName == '') {
+        if (user) this.user = new User(user);
+        if (user && this.authUserData.isAnonymous && user.displayName === '') {
           this.user.displayName = 'Guest';
         }
-
+        //else if (!user) return;
         this.activityStatus();
       });
   }

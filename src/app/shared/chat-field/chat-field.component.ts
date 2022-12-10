@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, Observable, tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,7 +14,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./chat-field.component.scss'],
 })
 
-export class ChatFieldComponent implements OnInit {
+export class ChatFieldComponent implements OnInit, OnDestroy {
   // chats$!: Observable<any[]>;
   openThreadComponent: boolean = false
   @Input() chats$!: Observable<any[]>;
@@ -50,6 +50,10 @@ export class ChatFieldComponent implements OnInit {
     ).subscribe();
 
     console.log(this.test)
+  }
+
+  ngOnDestroy(): void {
+    this.test.unsubscribe(); 
   }
 
 
