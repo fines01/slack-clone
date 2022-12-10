@@ -26,7 +26,7 @@ export class User {
         this.uid = (obj && obj.uid) ? obj.uid : '';
         this.email = (obj && obj.email) ? obj.email : '';
         this.emailVerified = (obj && obj.emailVerified) ? obj.emailVerified : false;
-        this.photoURL = (obj && obj.photoURL) ? obj.photoURL : '../assets/img/avatar-placeholder.png';
+        this.photoURL = (obj && obj.photoURL) ? obj.photoURL : 'assets/img/avatar-placeholder.png';
         this.displayName = (obj && obj.displayName) ? obj.displayName : '';
         // TODO remove firstName && lastName, instead ullName
         this.firstName = (obj && obj.firstName) ? obj.firstName : '';

@@ -7,8 +7,10 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.class';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreService } from '../../services/firestore.service';
-import { Subscription } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { EditUserContactDialogComponent } from '../edit-user-contact-dialog/edit-user-contact-dialog.component';
+import { UserInfo } from '@angular/fire/auth';
+import { Observable } from '@firebase/util';
 
 @Component({
   selector: 'app-user-profile',
