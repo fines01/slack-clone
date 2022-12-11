@@ -18,37 +18,37 @@ export class FirestoreService {
    */
   getCollection(collectionName: string, orderByDoc?: string) {
     let queryFn!: any;
-    orderByDoc ?  queryFn = (ref: any) => ref.orderBy(orderByDoc, 'asc') : queryFn = undefined;
+    orderByDoc ? queryFn = (ref: any) => ref.orderBy(orderByDoc, 'asc') : queryFn = undefined;
     return this.firestore
-      .collection(collectionName, queryFn  )
-      .valueChanges({idField: 'id'}) //returns collection / Observable that can be subscribed inside the component
-      .pipe( shareReplay(1) )
-    }
-    /* Warum shareReplay():
+      .collection(collectionName, queryFn)
+      .valueChanges({ idField: 'id' }) //returns collection / Observable that can be subscribed inside the component
+      .pipe(shareReplay(1))
+  }
+  /* Warum shareReplay():
 
-    share()-Operator: Gibt die Daten aus dem source observable frei, anstatt sie für jede neue Subscription neu zu abonnieren
-    (PROBLEM async pipes-Abonnements in Vorlagen geben keine Daten zurück, da der Stream bereits aktiv ist und seine ersten Daten ausgesendet hat. Nachfolgende Abonnements erhalten nur dann Daten, wenn eine neue Datenemission auf dem Stream ausgelöst wird.
-    LéSUNG: Mit shareReplay() wird der letzte Wert, der auf dem Stream gesendet wurde, 'wiedergegeben' (hier wird shareReplay(1) einen vorherigen Wert senden, wenn wir ihn abonnieren.
+  share()-Operator: Gibt die Daten aus dem source observable frei, anstatt sie für jede neue Subscription neu zu abonnieren
+  (PROBLEM async pipes-Abonnements in Vorlagen geben keine Daten zurück, da der Stream bereits aktiv ist und seine ersten Daten ausgesendet hat. Nachfolgende Abonnements erhalten nur dann Daten, wenn eine neue Datenemission auf dem Stream ausgelöst wird.
+  LéSUNG: Mit shareReplay() wird der letzte Wert, der auf dem Stream gesendet wurde, 'wiedergegeben' (hier wird shareReplay(1) einen vorherigen Wert senden, wenn wir ihn abonnieren.
 
-    param refCount 1 --> bufferSize von 1, wir wollen, dass nur ein vorheriger Wert für jeden neuen Abonnenten 'wiedergegeben' wird.
-    optional: ShareReplyConfig: sharereply({ bufferSize: 1, refCount: true})
-    refCount: standardmäßig falsch. Wenn true: unser shareReplay-Stream wird sich von der Quell-Observable abmelden, wenn es keine Abonnenten mehr gibt,
-    Andernfalls bleibt der shareReply-Stream bei der Quell-Observable abonniert und läuft einfach weiter (macht vielleicht Sinn, wenn ich diesen einzelnen db-Stream während der gesamten Lebensdauer der App konsistent verfügbar halten möchte)
+  param refCount 1 --> bufferSize von 1, wir wollen, dass nur ein vorheriger Wert für jeden neuen Abonnenten 'wiedergegeben' wird.
+  optional: ShareReplyConfig: sharereply({ bufferSize: 1, refCount: true})
+  refCount: standardmäßig falsch. Wenn true: unser shareReplay-Stream wird sich von der Quell-Observable abmelden, wenn es keine Abonnenten mehr gibt,
+  Andernfalls bleibt der shareReply-Stream bei der Quell-Observable abonniert und läuft einfach weiter (macht vielleicht Sinn, wenn ich diesen einzelnen db-Stream während der gesamten Lebensdauer der App konsistent verfügbar halten möchte)
 
-    */
+  */
 
-    /**
-     *
-     * @param {string} id
-     * @param {string} collectionName
-     * @returns {Observable} - firestore collection document
-     */
+  /**
+   *
+   * @param {string} id
+   * @param {string} collectionName
+   * @returns {Observable} - firestore collection document
+   */
   getDocByID(id: any, collectionName: string) {
     return this.firestore
       .collection(collectionName)
       .doc(id)
       .valueChanges()
-      .pipe ( share() );
+      .pipe(share());
   }
 
   /**
@@ -57,11 +57,11 @@ export class FirestoreService {
    * @param collectionName - name of the collection in which to search for matching documents
    * @returns array of all found documents of the collection that match the passed value
    */
-  getDocsByValue(field: string, value: any, collectionName: string){ // T
+  getDocsByValue(field: string, value: any, collectionName: string) { // T
     return this.firestore
       .collection(collectionName, ref => ref.where(field, '==', value))
-      .valueChanges({idField: 'id'})
-      .pipe( share() );
+      .valueChanges({ idField: 'id' })
+      .pipe(share());
   }
 
   /**
@@ -88,7 +88,7 @@ export class FirestoreService {
     return this.firestore
       .collection(collectionName)
       .doc(id)
-      .set(doc, {merge: true})
+      .set(doc, { merge: true })
   }
 
   // deleteDoc

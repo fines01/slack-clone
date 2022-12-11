@@ -40,7 +40,7 @@ export class ChatFieldComponent implements OnInit, OnDestroy {
           console.log(chat)
           this.fireService.getDocsByValue("chatId", chat.id, "threads").pipe(
             tap(data => {
-              console.log(data.length)
+              console.log('test', data.length)
               return data.length
             })
 
@@ -53,7 +53,7 @@ export class ChatFieldComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.test.unsubscribe(); 
+    this.test.unsubscribe();
   }
 
 
