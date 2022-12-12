@@ -17,7 +17,7 @@ export class User {
     phone!: string;
     status!: string;
     isActive: boolean = false;
-
+    channels: string[] = []; // ids der channels in der user Mitglied ist
 
     // ACHTUNG jede einzelne Property überprüfen (ob sie vorhanden ist)
     // sonst gibt es Fehler wenn ich nur einzelne Werte updaten will
@@ -39,6 +39,7 @@ export class User {
         this.phone = (obj && obj.phone) ? obj.phone : '+ Phone hinzufügen';
         this.status = (obj && obj.status) ? obj.status : '';
         this.isActive = (obj && obj.isActive) ? obj.isActive : false;
+        this.channels = (obj && obj.channels.length > 0) ? obj.channles : [];
     }
 
     // returns userdata as a json object
@@ -58,6 +59,7 @@ export class User {
             phone: this.phone,
             status: this.status,
             isActive: this.isActive,
+            channels: this.channels,
         }
     }
 }
