@@ -22,7 +22,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   date = new Date();
   user: User = new User();
   authUserData!: any; // user object from authentication database
-  activeColor ="grey";
+  activeColor = "grey";
+  activeStatus = "Abwesend";
 
   userSubscription!: Subscription;
   authStateSubscription!: Subscription;
@@ -55,21 +56,16 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.dialog.open(AdjustStatusComponent);
   }
 
-  // getUser(){
-  //   this.firestore
-  //   .collection('users')
-  //   .doc('Ck2zBp1TeuaNdEDGrCvDwqQxc732')
-  //   .valueChanges()
-  //   .subscribe((user:any) => {
-  //     this.user = new User(user);
-  //     console.log(this.user);
-  //   } )
-  // }
 
   activityStatus(){
     if(this.user.isActive == true){
       console.log('user is active');
       this.activeColor = "green";
+      this.activeStatus = "Aktiv";
+      this.fireService.createOrUpdateDoc({ isActive : 'true' }, this.user.uid, 'users') // Speichert und aktualisiert änderung für Datenbank
+      .then(() => {
+        console.log(this.user.isActive);
+      }).catch((error) => { console.log(error) });
     }
   }
 

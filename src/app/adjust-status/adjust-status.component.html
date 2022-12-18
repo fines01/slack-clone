@@ -1,9 +1,9 @@
-<div class="adjust-status-container">
+<div [ngStyle]="{height: textArea.length > 0 ? '30vh' : '40vh'} " class="adjust-status-container">
 
     <div class="header">
         <div>Status einstellen</div>
         <div>
-            <mat-icon>close</mat-icon>
+            <mat-icon class="close" (click)="closeDialog()">close</mat-icon>
         </div>
     </div>
 
@@ -11,9 +11,10 @@
         <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;" class="emoti-btn">
             <mat-icon>insert_emoticon</mat-icon>
         </button>
+
         <mat-form-field style="width:inherit" appearance="fill">
             <mat-label>Wie lautet dein Status?</mat-label>
-            <input ngDefaultControl [(ngModel)]="textArea" matInput>
+            <input ngDefaultControl matInput [(ngModel)]="textArea" >
         </mat-form-field>
     </div>
 
@@ -23,15 +24,40 @@
 
     </div>
 
-    <div class="workSpaceDiv">Für dein Workspace
-        <div class="quickInputDiv" *ngFor="let item of quickInput">
-           <div class="quickInputObject"> {{item.emoji}}</div>
-           <div class="quickInputObject">{{item.status}}</div>
-           <div class="quickInputObject"><time>--{{item.time}}</time></div>
+    <span *ngIf="textArea.length > 0; then setTime; else quickInputId"></span>
+
+    <ng-template #setTime>
+        <div class="setTimeDiv">
+            <span>Status entfernen nach...</span>
+
+            <mat-form-field style="width: 100%" appearance="fill">
+                <mat-label>Bitte wähle eine Option</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let time of times" [value]="time.value">
+                        {{time.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
-        
+
+    </ng-template>
+
+    <ng-template #quickInputId>
+        <div class="workSpaceDiv">Für dein Workspace
+            <div class="quickInputDiv" *ngFor="let quickEmoji of quickInput">
+                <div class="quickInputObject"> {{quickEmoji.emoji}}</div>
+                <div class="quickInputObject">{{quickEmoji.status}}</div>
+                <div class="quickInputObject"><time>--{{quickEmoji.time}}</time></div>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+    <div class="footer">
+        <div class="footer-btn-div">
+            <button (click)="closeDialog()" class="btn" mat-raised-button>Abbrechen</button>
+            <button class="btn" mat-raised-button color="primary" (click)="saveEdit()">Änderung speichern</button>
+        </div>
     </div>
-
-
-    <div class="footer"></div>
 </div>

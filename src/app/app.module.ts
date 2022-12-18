@@ -54,6 +54,8 @@ import { DialogImgComponent } from './shared/dialog-img/dialog-img.component';
 import { EditUserContactDialogComponent } from './user-components/edit-user-contact-dialog/edit-user-contact-dialog.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +75,7 @@ import { EditUserContactDialogComponent } from './user-components/edit-user-cont
     DialogImgComponent,
     InputComponent,
     EditUserContactDialogComponent,
+
 
   ],
   imports: [
