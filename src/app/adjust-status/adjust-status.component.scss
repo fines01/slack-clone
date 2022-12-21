@@ -1,9 +1,10 @@
 .adjust-status-container {
-    height: 60vh;
+    height: 40vh;
     width: 60vh;
+    position: relative;
 }
 
-.header{
+.header {
     width: 100%;
     font-size: 22px;
     display: flex;
@@ -11,7 +12,7 @@
     align-items: center;
 }
 
-.emoti-btn{
+.emoti-btn {
     height: 52px;
     width: 50px;
     border: none;
@@ -22,14 +23,14 @@
     background: #4D4D4D;
 }
 
-.emoji-container{
+.emoji-container {
     display: grid;
     grid-template-columns: 100% 0%;
     width: 36%;
 }
 
 
-.input-div{
+.input-div {
     margin-top: 10px;
     width: 100%;
     display: flex;
@@ -38,25 +39,46 @@
     align-items: flex-start;
 }
 
-.workSpaceDiv{
+.workSpaceDiv {
     width: 100%;
 }
 
-.quickInputDiv{
+.quickInputDiv {
     display: flex;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.quickInputObject{
+.quickInputObject {
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.quickInputDiv:hover{
+.quickInputDiv:hover {
     cursor: pointer;
     background-color: rgb(128, 128, 128);
     transition: 225ms;
     box-shadow: 1px 1px 4px 0.1px white;
+}
+
+.footer {
+    display: flex;
+    justify-content: end;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btn {
+    margin: 3px;
+}
+
+.close:hover {
+    cursor: pointer;
+}
+
+.setTimeDiv{
+    width: 100%;
+
 }

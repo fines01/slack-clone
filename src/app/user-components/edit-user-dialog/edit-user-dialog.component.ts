@@ -30,7 +30,7 @@ export class EditUserDialogComponent implements OnInit {
 
   loading: boolean = false;
 
-  foods: any;
+
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<EditUserDialogComponent>,
@@ -39,7 +39,7 @@ export class EditUserDialogComponent implements OnInit {
   ) { }
 
 
-  // Anfang Variablen für Firestore Storage
+  // Anfang die Variablen für Firestore Storage
   storage = getStorage(); // => Referenz für deinen Firestore Storage Bucket
   storageRef = ref(this.storage, '/user-images'); // => erstellt einen Ordner mit dem namen user-images in deinem Bucket
   spaceRef: any; // => muss bei ngOnInit definiert werden, sonst => this.user.uid = undefined
@@ -57,8 +57,7 @@ export class EditUserDialogComponent implements OnInit {
   fileSelected(file: any) {
     console.log(file); // gibt Daten über das (change) event im html teil zurück
     file = file.target.files[0]; // => definiert den Namen der file-datei
-    
-
+  
     // Doku für Up und Download :https://firebase.google.com/docs/storage/web/create-reference
     uploadBytes(this.spaceRef, file).then((snapshot) => {
       console.log('Uploaded file name', file.name); // file Name
