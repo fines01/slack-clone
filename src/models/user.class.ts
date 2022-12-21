@@ -17,11 +17,8 @@ export class User {
     phone!: string;
     status!: string;
     isActive: boolean = false;
-    channels: string[] = []; // ids der channels in der user Mitglied ist
+    channels!: string[];
 
-    // ACHTUNG jede einzelne Property überprüfen (ob sie vorhanden ist)
-    // sonst gibt es Fehler wenn ich nur einzelne Werte updaten will
-    // bsp.: beim registrieren v usern: registrieren sich nur mit usernamen, email,... alle anderen Werte können säter upgedatet werden aber ich müsste ich sonst jeden einzelnen wert leer übergeben um den User in der Db anlegen zu können.
     constructor(obj?: any){
         this.uid = (obj && obj.uid) ? obj.uid : '';
         this.email = (obj && obj.email) ? obj.email : '';
@@ -39,7 +36,7 @@ export class User {
         this.phone = (obj && obj.phone) ? obj.phone : '+ Phone hinzufügen';
         this.status = (obj && obj.status) ? obj.status : '';
         this.isActive = (obj && obj.isActive) ? obj.isActive : false;
-        this.channels = (obj && obj.channels.length > 0) ? obj.channles : [];
+        this.channels = (obj && obj.channels && obj.channels.length > 0) ? obj.channles : [];
     }
 
     // returns userdata as a json object
