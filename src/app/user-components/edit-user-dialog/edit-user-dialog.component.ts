@@ -39,11 +39,11 @@ export class EditUserDialogComponent implements OnInit {
   ) { }
 
 
-  // Anfang die Variablen für Firestore Storage
+  // [Anfang] die Variablen für Firestore Storage definieren
   storage = getStorage(); // => Referenz für deinen Firestore Storage Bucket
   storageRef = ref(this.storage, '/user-images'); // => erstellt einen Ordner mit dem namen user-images in deinem Bucket
   spaceRef: any; // => muss bei ngOnInit definiert werden, sonst => this.user.uid = undefined
-  // Ende Variablen für Firestore Storage
+  // [Ende] Variablen für Firestore Storage
 
   ngOnInit(): void {
     this.spaceRef = ref(this.storageRef, this.user.uid); // => Zugriff zum Ordner /user-images + Name der Datei die Up/downloadet wird

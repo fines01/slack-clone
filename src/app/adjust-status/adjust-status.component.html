@@ -1,4 +1,4 @@
-<div [ngStyle]="{height: textArea.length > 0 ? '30vh' : '40vh'} " class="adjust-status-container">
+<div [ngStyle]="{height: newStatus.length > 0 ? '30vh' : '40vh'} " class="adjust-status-container">
 
     <div class="header">
         <div>Status einstellen</div>
@@ -14,7 +14,7 @@
 
         <mat-form-field style="width:inherit" appearance="fill">
             <mat-label>Wie lautet dein Status?</mat-label>
-            <input ngDefaultControl matInput [(ngModel)]="textArea" >
+            <input ngDefaultControl matInput [(ngModel)]="newStatus" >
         </mat-form-field>
     </div>
 
@@ -24,7 +24,7 @@
 
     </div>
 
-    <span *ngIf="textArea.length > 0; then setTime; else quickInputId"></span>
+    <span *ngIf="newStatus.length > 0; then setTime; else quickInputId"></span>
 
     <ng-template #setTime>
         <div class="setTimeDiv">

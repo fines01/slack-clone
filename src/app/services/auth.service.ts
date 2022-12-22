@@ -197,6 +197,7 @@ export class AuthService {
     })
   }
 
+
   updateAuthUserEmail( authUser: any, email: string) {
     return updateEmail(authUser, email)
       .then( ()=> this.sendVerificationMail());

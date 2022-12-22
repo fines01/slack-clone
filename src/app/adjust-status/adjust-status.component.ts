@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EditUserDialogComponent } from '../user-components/edit-user-dialog/edit-user-dialog.component';
 import { User } from 'src/models/user.class';
@@ -21,7 +21,9 @@ export class AdjustStatusComponent implements OnInit {
 
   loading: boolean = false;
   user!: User;
-  authUserData!: any; // notw. wenn eigenschaften geändert werden die auch in Auth DB stehen (uid, email, pw, displayName)
+  authUserdata!: any; // notw. wenn eigenschaften geändert werden die auch in Auth DB stehen (uid, email, pw, displayName)
+
+  
 
   constructor(
     public dialog: MatDialog,
@@ -79,10 +81,10 @@ export class AdjustStatusComponent implements OnInit {
   ];
 
   //Emoji picker code
-  public textArea: string = '';
+  public newStatus: string = '';
   public isEmojiPickerVisible: boolean = false;
   public addEmoji(event: any) {
-    this.textArea = `${this.textArea}${event.emoji.native}`;
+    this.newStatus = `${this.newStatus}${event.emoji.native}`;
     this.isEmojiPickerVisible = false;
   }
   // Emoji picker code
@@ -95,20 +97,22 @@ export class AdjustStatusComponent implements OnInit {
 
   saveEdit() {
     // Todo form validations: verify & sanitize inputs? & then:
-    console.log(this.user);
+  this.user.status = this.newStatus;
+   this.getUpdateData();
+   this.updateAuthDB();
   }
 
   updateAuthDB() {
     this.loading = true;
     //if Status is changed:
-    this.authService.updateAuthUserName(this.authUserData, this.user.status)
+    this.authService.saveUserData(this.authUserdata)
       .then(() => this.updateDatabase())
       .catch((error) => console.log('%c' + error, 'color: orange'))
       .finally(() => this.loading = false);
   }
 
   updateDatabase() {
-    this.fireService.createOrUpdateDoc(this.getUpdateData(), this.authUserData.uid, 'users') // TODO: TEST - check function
+    this.fireService.createOrUpdateDoc(this.getUpdateData(), this.authUserdata.uid, 'users') // TODO: TEST - check function
       .then(() => console.log('%c' + 'SUCCESS - updated user: ', 'color: yellow; background-color: indigo', this.user))
       .catch((error) => console.log('%c' + error, 'color: orange'))
       .finally(() => {

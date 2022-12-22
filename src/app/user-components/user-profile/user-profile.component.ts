@@ -33,6 +33,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscribeAuthState();
+    this.activityStatus();
   }
 
   ngOnDestroy(): void {
@@ -53,7 +54,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   openAdjustStatus(){
-    this.dialog.open(AdjustStatusComponent);
+   let editDialog = this.dialog.open(AdjustStatusComponent);
+   editDialog.componentInstance.user = this.user;
+   editDialog.componentInstance.authUserdata = this.authUserData;
+
   }
 
 

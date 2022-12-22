@@ -32,7 +32,7 @@ export class User {
         this.namePronunciation = (obj && obj.namePronunciation) ? obj.namePronunciation : '+ Aussprache des Namens hinzufügen';
         this.title = (obj && obj.title) ? obj.title : '';
         this.phone = (obj && obj.phone) ? obj.phone : '+ Phone hinzufügen';
-        this.status = (obj && obj.status) ? obj.status : 'moin';
+        this.status = (obj && obj.status) ? obj.status : '';
         this.isActive = (obj && obj.isActive) ? obj.isActive : false;
         this.channels = (obj && obj.channels && obj.channels.length > 0) ? obj.channles : [];
     }
