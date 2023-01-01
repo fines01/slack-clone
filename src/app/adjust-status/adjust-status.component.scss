@@ -65,8 +65,9 @@
 .footer {
     display: flex;
     justify-content: flex-end;
-    position: absolute;
     bottom: 10px;
+    height: auto;
+    width: 100%;
     right: 10px;
 }
 

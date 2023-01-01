@@ -23,7 +23,7 @@ export class AdjustStatusComponent implements OnInit {
   user!: User;
   authUserdata!: any; // notw. wenn eigenschaften geändert werden die auch in Auth DB stehen (uid, email, pw, displayName)
 
-  
+
 
   constructor(
     public dialog: MatDialog,
@@ -35,45 +35,60 @@ export class AdjustStatusComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-  oneMinute = 60;
+  noDeleteOnTime = 0;
+  tenSeconds = 10000;
+  oneMinute = 60000;
   halfHour = this.oneMinute * 30;
   oneHour = this.oneMinute * 60;
   oneDay = this.oneHour * 12;
   oneWeek = this.oneDay * 7;
+
+  selectedTime: any;
+  statusTimerActive = false;
+  quick: any;
+  interval: any;
+
 
   quickInput = [{
 
     "emoji": "📅",
     "status": "In einem Meeting",
     "time": "1 Stunde",
+    "timeValue": this.oneHour,
   },
   {
 
     "emoji": "🚌",
     "status": "Unterwegs",
     "time": "30 Minuten",
+    "timeValue": this.halfHour,
   },
   {
 
     "emoji": "🤒",
     "status": "Krank",
     "time": "Heute",
+    "timeValue": this.oneDay,
   },
   {
 
     "emoji": "🌴",
     "status": "Im Urlaub",
     "time": "nicht löschen",
+    "timeValue": this.noDeleteOnTime,
   },
   {
 
     "emoji": "🏠",
     "status": "Home-Office",
-    "time": "Heute",
+    "time": "10 Sekunden Test",
+    "timeValue": this.tenSeconds,
   },];
 
   times: theTime[] = [
+    { value: this.noDeleteOnTime, viewValue: 'nicht Löschen ' },
+    { value: this.tenSeconds, viewValue: '10 Sekunden' },
+    { value: this.oneMinute, viewValue: '1 Minute' },
     { value: this.halfHour, viewValue: '30 Minuten' },
     { value: this.oneHour, viewValue: 'eine Stunde' },
     { value: this.oneDay, viewValue: 'ein Tag' },
@@ -89,17 +104,33 @@ export class AdjustStatusComponent implements OnInit {
   }
   // Emoji picker code
 
+  getValueOfQuickInput(index: any) {
+    this.newStatus = this.quickInput[index].emoji + this.quickInput[index].status;
+    this.selectedTime = this.quickInput[index].timeValue;
+    console.log(this.selectedTime);
 
-  oneHourIntervall() {
-    setTimeout((this.deleteStatus), this.oneHour);
   }
-
-
   saveEdit() {
     // Todo form validations: verify & sanitize inputs? & then:
-  this.user.status = this.newStatus;
-   this.getUpdateData();
-   this.updateAuthDB();
+    this.user.status = this.newStatus;
+    this.closeDialog();
+    if (this.selectedTime != undefined && this.selectedTime > 0) {
+      this.statusTimerActive = true;
+      if (this.statusTimerActive = true) {
+        this.setTimerForStatus();
+      } else {
+        this.deleteStatus();
+      }
+    } else {
+      this.updateData();
+    }
+
+  }
+
+  updateData() {
+    this.getUpdateData();
+    this.updateAuthDB();
+    this.closeDialog();
   }
 
   updateAuthDB() {
@@ -122,16 +153,45 @@ export class AdjustStatusComponent implements OnInit {
 
   getUpdateData() {
     // TODO maybe check which properties are updated
-    return this.user.setUserData()
+    return this.user.setUserData();
   }
 
   closeDialog() {
     this.dialogRef.close();
   }
 
+  setTimerForStatus() {
+    if (this.selectedTime > 0) {
+      this.interval = setInterval(() => {
+        if (this.selectedTime > 0) {
+          this.selectedTime--;
+          console.log(this.selectedTime);
+          if(this.interval > this.selectedTime){
+            clearInterval(this.interval);
+          }
+          this.setTimerForStatus();
+        }
+      }, 1000);
+    } else {
+      this.deleteStatus();
+    }
+  }
 
+  stopInterval() {
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = 0;
+      this.selectedTime = 0;
+    }
+  }
 
   deleteStatus() {
+    this.stopInterval;
+    this.statusTimerActive = false;
+    this.user.status = '';
+    this.getUpdateData();
+    this.updateAuthDB();
+    console.log(this.user.status);
 
   }
 }
