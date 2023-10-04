@@ -20,27 +20,25 @@ export class ChatFieldComponent implements OnInit {
   @Input() chats$!: Observable<any[]>;
   @Input() thread: boolean = false
   chat: any;
-  test: any;
+  numberOfChat: any;
 
 
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, private chatservices: ChatService, private dataservice: DataService, private fireService: FirestoreService) { }
 
   ngOnInit(): void {
+    this.updateNumberMessage()
+    console.log('anzahl',this.numberOfChat.length)
+  }
 
-
-
-
-    //anzahl thread
-    // doku: https://firebase.google.com/docs/firestore/query-data/queries?authuser=0&hl=de
-    // firebase abfragen mit chatid
-
-    this.test = this.chats$.pipe(
+  updateNumberMessage(){
+    this.numberOfChat = this.chats$.pipe(
       tap(chats => {
         chats.forEach(chat => {
-          console.log(chat)
+          // console.log(chat)
           this.fireService.getDocsByValue("chatId", chat.id, "threads").pipe(
             tap(data => {
-              console.log(data.length)
+              // console.log(data.length)
+              this.numberOfChat = data.length
               return data.length
             })
 
@@ -48,10 +46,7 @@ export class ChatFieldComponent implements OnInit {
         })
       })
     ).subscribe();
-
-    console.log(this.test)
   }
-
 
 
 
