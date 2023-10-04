@@ -92,7 +92,7 @@ export class InputComponent implements OnInit {
     this.userSubscription = this.fireService.getDocByID(this.authUserData.uid, 'users')
       .subscribe((user: any) => {
         this.user = new User(user);
-        if (this.authUserData.isAnonymous && user.displayName == '') {
+        if (user && this.authUserData.isAnonymous && user.displayName === '') {
           this.user.displayName = 'Guest';
         }
       });

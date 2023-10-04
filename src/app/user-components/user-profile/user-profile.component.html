@@ -7,7 +7,7 @@
 
 <div class="profil-container">
     <div class="profil-img-container">
-            <img class="img avatar-img" src="/assets/img/avatar-placeholder.png" alt="">
+            <img class="img avatar-img" [src]="user.photoURL">
 
     </div>
 
@@ -33,8 +33,10 @@
 
             <div class="active-container">
                 <i><div [style.background-color]="activeColor" class="activeIcon"></div></i>
-                <span class="padding-left-50">Aktiv</span>
+                <span class="padding-left-50">{{activeStatus}}</span>
             </div>
+
+            <div class="statusDiv">{{user.status}}</div>
 
 
             <div class="margin-top-75">

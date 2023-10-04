@@ -40,22 +40,13 @@
         </mat-form-field>
 
 
-        <div class="margin-30"></div>
-
-        <mat-form-field class="mat-div" appearance="fill">
-          <mat-label>Zeitzone</mat-label>
-          <mat-select [(ngModel)]="user.timeZone" [disabled]="loading" name="timeZone">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{food.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+    
       </div>
 
       <div class="edit-img-div">
         <div class="profil-img-container">
           <div class="profil-img">
-            <img class="avatar-img" src="assets/img/avatar-placeholder.png">
+            <img class="avatar-img" [src]="user.photoURL">
           </div>
         </div>
 

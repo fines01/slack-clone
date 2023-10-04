@@ -22,7 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 //Spezial
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
-
+import { AngularImageViewerModule } from '@hreimer/angular-image-viewer/public-api';
 
 
 //Firebase
@@ -54,6 +54,9 @@ import { DialogImgComponent } from './shared/dialog-img/dialog-img.component';
 import { EditUserContactDialogComponent } from './user-components/edit-user-contact-dialog/edit-user-contact-dialog.component';
 
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +75,9 @@ import { EditUserContactDialogComponent } from './user-components/edit-user-cont
     ThreadContainerComponent,
     DialogImgComponent,
     InputComponent,
-    EditUserContactDialogComponent
+    EditUserContactDialogComponent,
+
+
   ],
   imports: [
 
@@ -92,7 +97,6 @@ import { EditUserContactDialogComponent } from './user-components/edit-user-cont
     PickerModule,
     FormsModule,
     HttpClientModule,
-    
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

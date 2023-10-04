@@ -24,6 +24,8 @@
     "@ctrl/ngx-emoji-mart": "^7.0.0",
     "@fancyapps/ui": "^4.0.31",
     "@hreimer/angular-image-viewer": "^0.13.1",
+    "angular-emojis": "^1.0.0",
+    "loader-utils": "^3.2.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

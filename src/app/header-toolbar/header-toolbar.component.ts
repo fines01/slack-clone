@@ -20,7 +20,8 @@ export class HeaderToolbarComponent implements OnInit {
     this.authService.signOut()
       .then( ()=> {
         setTimeout(()=>this.router.navigate(['/login']),)
-      } );
+      } )
+      .catch(()=>{console.log('oops, something went wrong')});
   }
 
 }

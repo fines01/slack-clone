@@ -7,8 +7,10 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.class';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreService } from '../../services/firestore.service';
-import { Subscription } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { EditUserContactDialogComponent } from '../edit-user-contact-dialog/edit-user-contact-dialog.component';
+import { UserInfo } from '@angular/fire/auth';
+import { Observable } from '@firebase/util';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,7 +22,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   date = new Date();
   user: User = new User();
   authUserData!: any; // user object from authentication database
-  activeColor ="grey";
+  activeColor = "grey";
+  activeStatus = "Abwesend";
 
   userSubscription!: Subscription;
   authStateSubscription!: Subscription;
@@ -30,6 +33,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscribeAuthState();
+    this.activityStatus();
   }
 
   ngOnDestroy(): void {
@@ -50,24 +54,22 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   openAdjustStatus(){
-    this.dialog.open(AdjustStatusComponent);
+   let editDialog = this.dialog.open(AdjustStatusComponent);
+   editDialog.componentInstance.user = this.user;
+   editDialog.componentInstance.authUserdata = this.authUserData;
+
   }
 
-  // getUser(){
-  //   this.firestore
-  //   .collection('users')
-  //   .doc('Ck2zBp1TeuaNdEDGrCvDwqQxc732')
-  //   .valueChanges()
-  //   .subscribe((user:any) => {
-  //     this.user = new User(user);
-  //     console.log(this.user);
-  //   } )
-  // }
 
   activityStatus(){
     if(this.user.isActive == true){
       console.log('user is active');
       this.activeColor = "green";
+      this.activeStatus = "Aktiv";
+      this.fireService.createOrUpdateDoc({ isActive : 'true' }, this.user.uid, 'users') // Speichert und aktualisiert änderung für Datenbank
+      .then(() => {
+        console.log(this.user.isActive);
+      }).catch((error) => { console.log(error) });
     }
   }
 
@@ -83,11 +85,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   subscribeCurrentUser(){
     this.userSubscription = this.fireService.getDocByID(this.authUserData.uid, 'users')
       .subscribe( (user:any)=>{
-        this.user = new User(user);
-        if (this.authUserData.isAnonymous && user.displayName == '') {
+        if (user) this.user = new User(user);
+        if (user && this.authUserData.isAnonymous && user.displayName === '') {
           this.user.displayName = 'Guest';
         }
-
+        //else if (!user) return;
         this.activityStatus();
       });
   }

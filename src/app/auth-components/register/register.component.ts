@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -19,6 +20,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private fireService: FirestoreService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -68,10 +70,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (currentUser && currentUser.isAnonymous) {
       this.authService.linkAnonymousAccount(this.email.value, this.password.value, this.userName.value);
       this.setUpExistingUserData(currentUser);
+      this.router.navigate(['/']);
     }
     else (this.authService.registerNewUser(this.email.value, this.password.value, this.userName.value))
       .then( (result) => {
-        if (result) this.authService.setUpAccount(result.user, this.userName.value);
+        if (result) {
+          this.authService.setUpAccount(result.user, this.userName.value);
+          this.router.navigate(['/']);
+        }
       })
       .catch( (err) => this.errorMessage = this.handleError(err));
   }
